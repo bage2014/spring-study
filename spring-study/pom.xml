@@ -20,9 +20,22 @@
 		<spring.base.version>4.3.9.RELEASE</spring.base.version>
 		<junit.base.version>UTF-8</junit.base.version>
 		<servlet.base.version>3.0-alpha-1</servlet.base.version>
+		<jsp.base.version>2.1</jsp.base.version>
+		<jstl.base.version>1.2</jstl.base.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.base.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp.base.version}</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
