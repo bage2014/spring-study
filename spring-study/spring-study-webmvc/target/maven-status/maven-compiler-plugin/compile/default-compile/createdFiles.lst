@@ -1,0 +1,3 @@
+com\bage\controller\HelloController.class
+com\bage\service\HelloService.class
+com\bage\service\HelloServiceImpl.class
