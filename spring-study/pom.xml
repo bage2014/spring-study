@@ -77,5 +77,6 @@
 
 	<modules>
 		<module>spring-study-webmvc</module>
+		<module>spring-study-beans</module>
 	</modules>
 </project>

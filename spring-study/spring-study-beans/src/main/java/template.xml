@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 最基本的Bean对象 -->
+	<bean id="template" class="com.bage.xml.Template">
+		<!-- collaborators and configuration for this bean go here -->
+	</bean>
+
+	<!-- 引入xml文件 -->
+	<import resource="to-import.xml" />
+
+	<!-- 静态bean，需要指定 factory-method -->
+	<bean id="clientService" class="com.bage.xml.instance.ClientService"
+		factory-method="createInstance" />
+
+	<!-- 依赖bean -->
+	<bean id="foo" class="com.bage.xml.dependency.Foo">
+		<constructor-arg ref="bar" />
+		<constructor-arg ref="baz" />
+	</bean>
+	<bean id="bar" class="com.bage.xml.dependency.Bar" />
+	<bean id="baz" class="com.bage.xml.dependency.Baz" />
+
+	<!-- 参数bean -->
+	<bean id="exampleBean1" class="com.bage.xml.argument.ExampleBean">
+		<constructor-arg type="int" value="7500000" />
+		<constructor-arg type="java.lang.String" value="42" />
+	</bean>
+	<bean id="exampleBean2" class="com.bage.xml.argument.ExampleBean">
+        <constructor-arg index="0" value="7500000"/>
+        <constructor-arg index="1" value="42"/>
+	</bean>
+	<bean id="exampleBean3" class="com.bage.xml.argument.ExampleBean">
+	        <constructor-arg name="years" value="7500000"/>
+	        <constructor-arg name="ultimateAnswer" value="42"/>
+	</bean>
+
+	<!-- more bean definitions go here -->
+
+</beans>
