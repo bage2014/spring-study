@@ -27,10 +27,17 @@ https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/core.htm
 Notice the use of the $ character in the name to separate the nested class name from the outer class name.
        
        
-循环依赖：       
+循环依赖(用set方式可以避免)：       
 One possible solution is to edit the source code of some classes to be configured by setters rather than constructors. Alternatively, avoid constructor injection and use setter injection only. In other words, although it is not recommended, you can configure circular dependencies with setter injection.      
        
-## 2017-09-06 0:56       
-       
+## 2017-09-06 0:56     
+
+设置各种值
+The value of a map key or value, or a set value, can also again be any of the following elements:
+bean | ref | idref | list | set | map | props | value | null  
+      
+1.4.3. Using depends-on 
+
+
        
         

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
                 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -15,6 +17,9 @@
 	<!-- 静态bean，需要指定 factory-method -->
 	<bean id="clientService" class="com.bage.xml.instance.ClientService"
 		factory-method="createInstance" />
+	
+	<!-- 内部bean，非静态内部类，其默认构造函数有一个参数，是其外部类的实例， $ 来分隔内部类 -->
+	<bean id="innerClass" class="com.bage.xml.Innerclass.OuterClass$InnerClass" />
 
 	<!-- 依赖bean -->
 	<bean id="foo" class="com.bage.xml.dependency.Foo">
@@ -30,14 +35,83 @@
 		<constructor-arg type="java.lang.String" value="42" />
 	</bean>
 	<bean id="exampleBean2" class="com.bage.xml.argument.ExampleBean">
-        <constructor-arg index="0" value="7500000"/>
-        <constructor-arg index="1" value="42"/>
+		<constructor-arg index="0" value="7500000" />
+		<constructor-arg index="1" value="42" />
 	</bean>
 	<bean id="exampleBean3" class="com.bage.xml.argument.ExampleBean">
-	        <constructor-arg name="years" value="7500000"/>
-	        <constructor-arg name="ultimateAnswer" value="42"/>
+		<constructor-arg name="years" value="7500000" />
+		<constructor-arg name="ultimateAnswer" value="42" />
 	</bean>
+	
+	<!-- 循环依赖 -->
+	<!-- 
+	<bean id="circularBar2" class="com.bage.xml.circulardependencies.Bar2">
+		<constructor-arg ref="circularBaz2" />
+	</bean>
+	<bean id="circularBaz2" class="com.bage.xml.circulardependencies.Baz2">
+		<constructor-arg ref="circularBar2" />
+	</bean> 
+	-->
+	<bean id="circularBar" class="com.bage.xml.circulardependencies.Bar">
+		<!-- setter injection using the nested ref element -->
+        <property name="baz">
+                <ref bean="circularBaz"/>
+        </property>
+	</bean>
+	<bean id="circularBaz" class="com.bage.xml.circulardependencies.Baz">
+		<!-- setter injection using the neater ref attribute -->
+		<property name="bar" ref="circularBar"></property> 
+	</bean>
+		
+	<!-- 设置各种值 -->
+	<bean id="refBean" class="com.bage.xml.value.RefBean">
+	</bean>
+	<bean id="valueInit" class="com.bage.xml.value.ValueInit">
+		<!-- setter injection using the neater ref attribute -->
+		<property name="id" value="123"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
+        <property name="canNull">
+        	<null></null>
+        </property>
+        <property name="properties">
+                <props>
+                        <prop key="administrator">administrator@example.org</prop>
+                        <prop key="support">support@example.org</prop>
+                        <prop key="development">development@example.org</prop>
+                </props>
+        </property>
+        <!-- results in a setSomeList(java.util.List) call -->
+        <property name="list">
+                <list>
+                        <value>a list element followed by a reference</value>
+                        <ref bean="refBean" />
+                </list>
+        </property>
+        <!-- results in a setSomeMap(java.util.Map) call，value-ref 不是参照常量 -->
+        <property name="map">
+                <map>
+                        <entry key="an entry" value="just some string"/>
+                        <entry key ="a ref" value-ref="refBean"/>
+                </map>
+        </property>
+        <!-- results in a setSomeSet(java.util.Set) call -->
+        <property name="set">
+                <set>
+                        <value>just some string</value>
+                        <ref bean="refBean" />
+                </set>
+        </property>
+	</bean>
+	
+	<!-- 快捷配置，需要增加命名空间	 -->
+	<bean name="shortcutExampleBean" class="com.bage.xml.shortcut.ShortcutExampleBean"
+		c:shortcutBar-ref="shortcutBar" c:shortcutBaz-ref="shortcutBaz"
+		c:shortcutFoo-ref="shortcutFoo" c:name="name-value" p:email="foo@bar.com" />
+	<bean id="shortcutBar" class="com.bage.xml.shortcut.Bar" />
+	<bean id="shortcutBaz" class="com.bage.xml.shortcut.Baz" />
+	<bean id="shortcutFoo" class="com.bage.xml.shortcut.Foo" />	
 
+	
 	<!-- more bean definitions go here -->
 
 </beans>
