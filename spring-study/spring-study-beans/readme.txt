@@ -30,7 +30,7 @@ Notice the use of the $ character in the name to separate the nested class name 
 循环依赖(用set方式可以避免)：       
 One possible solution is to edit the source code of some classes to be configured by setters rather than constructors. Alternatively, avoid constructor injection and use setter injection only. In other words, although it is not recommended, you can configure circular dependencies with setter injection.      
        
-## 2017-09-06 0:56     
+## 2017-09-06 00:56     
 
 设置各种值
 The value of a map key or value, or a set value, can also again be any of the following elements:
@@ -38,6 +38,15 @@ bean | ref | idref | list | set | map | props | value | null
       
 1.4.3. Using depends-on 
 
+1.4.4. Lazy-initialized beans
 
-       
+1.4.5. Autowiring collaborators
+
+1.4.6. Method injection(不推荐，先进行跳过)
+The preceding is not desirable, because the business code is aware of and coupled to the Spring Framework. Method Injection, a somewhat advanced feature of the Spring IoC container, allows this use case to be handled in a clean fashion.
+
+1.5. Bean scopes
+
+1.5.4. Request, session, application, and WebSocket scopes
+## 2017-09-08 23:11       
         

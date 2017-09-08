@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <beans default-lazy-init="true"> 全体类进行懒加载  -->      
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:c="http://www.springframework.org/schema/c"
@@ -111,6 +113,29 @@
 	<bean id="shortcutBaz" class="com.bage.xml.shortcut.Baz" />
 	<bean id="shortcutFoo" class="com.bage.xml.shortcut.Foo" />	
 
+	<!-- 依赖配置 static initializer -->
+	<bean id="managerBean" class="com.bage.xml.dependson.ManagerBean" depends-on="baseBean,baseBean2">
+		<property name="baseBean" ref="baseBean" />
+	</bean>
+	<bean id="baseBean" class="com.bage.xml.dependson.BaseBean" />
+	<bean id="baseBean2" class="com.bage.xml.dependson.BaseBean2" />
+	
+	<!-- 懒加载 -->
+	<bean id="lazyinitBaseBean" class="com.bage.xml.lazyinit.BaseBean" lazy-init="true">
+	</bean>
+	
+	<!-- Autowiring collaborators -->
+	<import resource="to-import-autowiring-collaborators.xml" />
+	
+	<!-- Bean scopes  -->
+	<!-- singleton -->
+	<bean id="accountService" class="com.bage.xml.scopes.singleton.DefaultAccountService"/>
+	<!-- the following is equivalent, though redundant (singleton scope is the default) -->
+	<!-- <bean id="accountService" class="com.bage.xml.scopes.DefaultAccountService" scope="singleton"/> -->
+	<!-- prototype -->
+	<bean id="prototypeAccountService" class="com.bage.xml.scopes.prototype.DefaultAccountService" scope="prototype"/>
+	<!-- 未完。。。 -->
+	
 	
 	<!-- more bean definitions go here -->
 

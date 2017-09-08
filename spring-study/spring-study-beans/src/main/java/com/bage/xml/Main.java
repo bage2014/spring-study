@@ -5,12 +5,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bage.xml.Innerclass.OuterClass.InnerClass;
 import com.bage.xml.argument.ExampleBean;
+import com.bage.xml.autowiringcollaborators.byname.CumputerBean;
 import com.bage.xml.base.Demo;
 import com.bage.xml.base.Example;
 import com.bage.xml.base.Hello;
 import com.bage.xml.circulardependencies.Bar;
 import com.bage.xml.dependency.Foo;
+import com.bage.xml.dependson.ManagerBean;
 import com.bage.xml.instance.ClientService;
+import com.bage.xml.lazyinit.BaseBean;
+import com.bage.xml.scopes.singleton.DefaultAccountService;
 import com.bage.xml.shortcut.ShortcutExampleBean;
 import com.bage.xml.value.ValueInit;
 
@@ -73,6 +77,39 @@ public class Main {
 		// 赋值简写依赖
 		ShortcutExampleBean shortcutExampleBean = context.getBean("shortcutExampleBean",ShortcutExampleBean.class);
 		System.out.println(shortcutExampleBean.toString());
+		
+		// 依赖依赖(静态资源)
+		ManagerBean managerBean = context.getBean("managerBean",ManagerBean.class);
+		System.out.println(managerBean);
+		//System.out.println(managerBean.getBaseBean());
+		
+		// 懒加载(<!-- <beans default-lazy-init="true"> 全体类进行懒加载  -->   )
+		BaseBean lazyinitBaseBean = context.getBean("lazyinitBaseBean",BaseBean.class);
+		System.out.println(lazyinitBaseBean);
+		
+		// Autowiring collaborators
+		// byname
+		CumputerBean cumputerBean = context.getBean("cumputerBean",CumputerBean.class);
+		System.out.println(cumputerBean);
+		// bytype
+		com.bage.xml.autowiringcollaborators.bytype.CumputerBean cumputerBean2 = context.getBean("cumputerBean2",com.bage.xml.autowiringcollaborators.bytype.CumputerBean.class);
+		System.out.println(cumputerBean2);
+		// constructor
+		com.bage.xml.autowiringcollaborators.constructor.CumputerBean cumputerBean3 = context.getBean("cumputerBean3",com.bage.xml.autowiringcollaborators.constructor.CumputerBean.class);
+		System.out.println(cumputerBean3);
+		
+		// Bean scopes
+		// singleton 默认的 + 前面的都是单例模式( accountService1 == accountService2 )
+		DefaultAccountService accountService1 = context.getBean("accountService",DefaultAccountService.class);
+		System.out.println(accountService1);
+		DefaultAccountService accountService2 = context.getBean("accountService",DefaultAccountService.class);
+		System.out.println(accountService2);
+		// prototype( accountService1 != accountService2 )
+		com.bage.xml.scopes.prototype.DefaultAccountService prototypeAccountService1 = context.getBean("prototypeAccountService",com.bage.xml.scopes.prototype.DefaultAccountService.class);
+		System.out.println(prototypeAccountService1);
+		com.bage.xml.scopes.prototype.DefaultAccountService prototypeAccountService2 = context.getBean("prototypeAccountService",com.bage.xml.scopes.prototype.DefaultAccountService.class);
+		System.out.println(prototypeAccountService2);
+		
 		
 		
 		
