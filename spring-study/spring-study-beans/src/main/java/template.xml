@@ -134,9 +134,13 @@
 	<!-- <bean id="accountService" class="com.bage.xml.scopes.DefaultAccountService" scope="singleton"/> -->
 	<!-- prototype -->
 	<bean id="prototypeAccountService" class="com.bage.xml.scopes.prototype.DefaultAccountService" scope="prototype"/>
-	<!-- 未完。。。 -->
-	
-	
+	<!-- request,session,application  需要在web.xml中添加配置,需要更换不同的获取上下文的方式 -->
+	<!-- request 需要在web.xml中添加配置 -->
+	<bean id="loginAction" class="com.bage.xml.scopes.request.LoginAction" scope="request"/>
+	<!-- session 需要在web.xml中添加配置 -->
+	<bean id="userPreferences" class="com.bage.xml.scopes.session.UserPreferences" scope="session"/>
+	<!-- application -->
+	<bean id="appPreferences" class="com.foo.AppPreferences" scope="application"/>
 	<!-- more bean definitions go here -->
 
 </beans>

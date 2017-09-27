@@ -48,5 +48,9 @@ The preceding is not desirable, because the business code is aware of and couple
 1.5. Bean scopes
 
 1.5.4. Request, session, application, and WebSocket scopes
-## 2017-09-08 23:11       
+## 2017-09-08 23:11   
+
+Choosing the type of proxy to create 未尝试
+1.5.5. Custom scopes 
+## 2017-09-28    
         

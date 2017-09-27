@@ -3,5 +3,28 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+	<display-name>Archetype Created Web Application</display-name>
+	
+	<!-- scope 配置开始 -->
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>	
+	<servlet>
+		<servlet-name>example</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>example</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>	 
+	<!-- 指定Spring Bean的配置文件所在目录。默认配置在/WEB-INF/applicationContext.xml目录下 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:template.xml</param-value>
+	</context-param>
+	<!-- scope 配置结束 -->
+	
 </web-app>
