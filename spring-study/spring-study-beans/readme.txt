@@ -50,7 +50,24 @@ The preceding is not desirable, because the business code is aware of and couple
 1.5.4. Request, session, application, and WebSocket scopes
 ## 2017-09-08 23:11   
 
-Choosing the type of proxy to create 未尝试
-1.5.5. Custom scopes 
+Choosing the type of proxy to create //TODO
+1.5.5. Custom scopes  //TODO
 ## 2017-09-28    
+
+1.6. Customizing the nature of a bean
+
+1.6.1. Lifecycle callbacks
+Initialization callbacks
+Destruction callbacks
+
+Startup and shutdown callbacks //TODO
+
+Shutting down the Spring IoC container gracefully in non-web applications
+
+1.6.2. ApplicationContextAware and BeanNameAware //TODO
+
+1.7. Bean definition inheritance
+
+
+
         

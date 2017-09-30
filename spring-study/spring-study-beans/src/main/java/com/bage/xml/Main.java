@@ -12,8 +12,11 @@ import com.bage.xml.base.Hello;
 import com.bage.xml.circulardependencies.Bar;
 import com.bage.xml.dependency.Foo;
 import com.bage.xml.dependson.ManagerBean;
+import com.bage.xml.inheritedbean.InheritedTestBean;
+import com.bage.xml.inheritedbean.InheritsWithDifferentClass;
 import com.bage.xml.instance.ClientService;
 import com.bage.xml.lazyinit.BaseBean;
+import com.bage.xml.lifecyclecallbacks.AnotherExampleBean;
 import com.bage.xml.scopes.singleton.DefaultAccountService;
 import com.bage.xml.shortcut.ShortcutExampleBean;
 import com.bage.xml.value.ValueInit;
@@ -32,8 +35,12 @@ public class Main {
 		// 加载 spring 容器
 		ApplicationContext context =
 		        new ClassPathXmlApplicationContext(beansFilePathStr); 
+//		ConfigurableApplicationContext context =
+//				new ClassPathXmlApplicationContext(beansFilePathStr); //Shutting down the Spring IoC container gracefully in non-web applications
 		// beans.xml == classpath:beans.xml 等价
-		
+		// add a shutdown hook for the above context...Shutting down the Spring IoC container gracefully in non-web applications
+		// context.registerShutdownHook();
+        
 		// 获取一个基本bean
 		Template template = context.getBean("template",Template.class);
 		System.out.println(template);
@@ -110,6 +117,16 @@ public class Main {
 		com.bage.xml.scopes.prototype.DefaultAccountService prototypeAccountService2 = context.getBean("prototypeAccountService",com.bage.xml.scopes.prototype.DefaultAccountService.class);
 		System.out.println(prototypeAccountService2);
 		
+		// lifecycle callbacks
+		AnotherExampleBean anotherExampleBean = context.getBean("anotherExampleBean",AnotherExampleBean.class);
+		System.out.println(anotherExampleBean);
+		
+		
+		// Bean definition inheritance
+		InheritedTestBean inheritedTestBean = context.getBean("inheritedTestBean",InheritedTestBean.class);
+		System.out.println(inheritedTestBean.toString());
+		InheritsWithDifferentClass inheritsWithDifferentClass = context.getBean("inheritsWithDifferentClass",InheritsWithDifferentClass.class);
+		System.out.println(inheritsWithDifferentClass.toString());
 		
 		
 		
