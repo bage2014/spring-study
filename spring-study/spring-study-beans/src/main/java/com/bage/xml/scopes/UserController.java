@@ -1,4 +1,4 @@
-package com.bage.xml.scopes.request;
+package com.bage.xml.scopes;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/scope")
 public class UserController {
 
-	@RequestMapping("/login")
+	@RequestMapping("/loginAction")
 	@ResponseBody
 	public String login(HttpServletRequest request){
 		ServletContext sc = request.getSession().getServletContext();   
