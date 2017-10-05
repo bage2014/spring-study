@@ -10,6 +10,7 @@ import com.bage.xml.base.Demo;
 import com.bage.xml.base.Example;
 import com.bage.xml.base.Hello;
 import com.bage.xml.circulardependencies.Bar;
+import com.bage.xml.containerextensionpoints.MyDataSource;
 import com.bage.xml.dependency.Foo;
 import com.bage.xml.dependson.ManagerBean;
 import com.bage.xml.inheritedbean.InheritedTestBean;
@@ -128,7 +129,12 @@ public class Main {
 		InheritsWithDifferentClass inheritsWithDifferentClass = context.getBean("inheritsWithDifferentClass",InheritsWithDifferentClass.class);
 		System.out.println(inheritsWithDifferentClass.toString());
 		
+		// Customizing beans using a BeanPostProcessor
+		// 只需要配置一下就好：<bean class="com.bage.xml.containerextensionpoints.InstantiationTracingBeanPostProcessor" />
 		
+		// Customizing configuration metadata with a BeanFactoryPostProcessor
+		MyDataSource myDataSource = context.getBean("myDataSource",MyDataSource.class);
+		System.out.println(myDataSource.toString());
 		
 	}
 }

@@ -148,23 +148,37 @@
 	<!-- Lifecycle callbacks init-method="init" 可以统一定义比如： <beans default-init-method="init"> -->
 	<bean id="anotherExampleBean" class="com.bage.xml.lifecyclecallbacks.AnotherExampleBean"
 		init-method="init" destroy-method="cleanup" />
-		
-	<!-- abstract="true" -->
-	<bean id="inheritedTestBean"
-		class="com.bage.xml.inheritedbean.InheritedTestBean">
+
+	<!-- Bean definition inheritance -->
+	<bean id="inheritedTestBean" class="com.bage.xml.inheritedbean.InheritedTestBean">
 		<property name="name" value="parent" />
 		<property name="age" value="1" />
 	</bean>
-
 	<bean id="inheritsWithDifferentClass" class="com.bage.xml.inheritedbean.InheritsWithDifferentClass"
 		parent="inheritedTestBean">
 		<property name="name" value="override" />
 		<!-- the age property value of 1 will be inherited from parent -->
 	</bean>
 
+	<!-- Customizing beans using a BeanPostProcessor -->
+	<bean
+		class="com.bage.xml.containerextensionpoints.InstantiationTracingBeanPostProcessor">
+	</bean>
+
+	<!-- Customizing configuration metadata with a BeanFactoryPostProcessor -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:com/bage/xml/containerextensionpoints/jdbc.properties" />
+	</bean>
+	<bean id="myDataSource"	class="com.bage.xml.containerextensionpoints.MyDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+
+
 
 	<!-- more bean definitions go here -->
-
-
 
 </beans>

@@ -52,7 +52,7 @@ The preceding is not desirable, because the business code is aware of and couple
 
 Choosing the type of proxy to create //TODO
 1.5.5. Custom scopes  //TODO
-## 2017-09-28    
+## 2017-09-28 22：00   
 
 1.6. Customizing the nature of a bean
 
@@ -67,6 +67,17 @@ Shutting down the Spring IoC container gracefully in non-web applications
 1.6.2. ApplicationContextAware and BeanNameAware //TODO
 
 1.7. Bean definition inheritance
+
+## 2017-09-30 22：22
+1.8. Container Extension Points
+1.8.1. Customizing beans using a BeanPostProcessor
+
+1.8.2. Customizing configuration metadata with a BeanFactoryPostProcessor
+
+1.8.3. Customizing instantiation logic with a FactoryBean //TODO
+
+1.9. Annotation-based container configuration
+
 
 
 
