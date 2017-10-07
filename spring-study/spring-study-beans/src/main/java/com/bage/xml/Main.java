@@ -28,7 +28,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		String beansFilePathStr[] = {
-				"classpath:template.xml", // src目录
+				"classpath:com/bage/xml/template.xml", // src目录
+				"classpath:src.xml", // src目录
 				"beans-in-resource.xml",// resources目录下
 				"classpath:com/bage/xml/in-package.xml"  // 包下的配置文件
 		};
