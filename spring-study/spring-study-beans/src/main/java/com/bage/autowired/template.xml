@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- <beans default-lazy-init="true"> 全体类进行懒加载 -->
-<!-- <beans default-init-method="init"> 全体类默认初始化方法等，也可以进行别的方法，比如destroy -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:c="http://www.springframework.org/schema/c"
-	xmlns:p="http://www.springframework.org/schema/p"
-    xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
                 http://www.springframework.org/schema/beans/spring-beans.xsd
                 http://www.springframework.org/schema/context
@@ -18,8 +14,10 @@
 	</bean>
 
 	<!-- Annotation-based container configuration -->
-	<context:annotation-config/>
-
-	<!-- more bean definitions go here -->
-
+	<!-- <context:annotation-config /> -->
+	<!-- 一般使用的是 1.10.3. Automatically detecting classes and registering bean 
+		definitions 来代替上面的配置 -->
+	<context:component-scan base-package="com.bage.autowired" />
+	<!-- base-package 可以 == com.a,com.b -->
+	
 </beans>
