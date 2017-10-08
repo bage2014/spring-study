@@ -1,4 +1,4 @@
-package com.bage.xml;
+package com.bage;
 
 public class Template {
 

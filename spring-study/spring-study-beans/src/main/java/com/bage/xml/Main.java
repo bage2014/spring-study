@@ -3,6 +3,7 @@ package com.bage.xml;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.bage.Template;
 import com.bage.xml.Innerclass.OuterClass.InnerClass;
 import com.bage.xml.argument.ExampleBean;
 import com.bage.xml.autowiringcollaborators.byname.CumputerBean;
