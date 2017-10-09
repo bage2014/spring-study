@@ -17,7 +17,25 @@
 	<!-- <context:annotation-config /> -->
 	<!-- 一般使用的是 1.10.3. Automatically detecting classes and registering bean 
 		definitions 来代替上面的配置 -->
-	<context:component-scan base-package="com.bage.autowired" />
+	<context:component-scan base-package="com.bage.annotation" />
 	<!-- base-package 可以 == com.a,com.b -->
+	
+	<!-- @Required -->
+	<bean id = "movieFinder" class="com.bage.annotation.required.MovieFinder">
+	</bean>
+	<bean id = "simpleMovieLister" class="com.bage.annotation.required.SimpleMovieLister">
+		<property name="movieFinder" ref="movieFinder" ></property>
+	</bean>
+	<!-- constructors -->
+	<bean id = "movieRecommender" class="com.bage.annotation.autowired.constructors.MovieRecommender">
+	</bean>
+	<bean class="com.bage.annotation.autowired.CustomerPreferenceDao">
+	</bean>
+	<!-- setter -->
+	<bean id = "simpleMovieListerSetter" class="com.bage.annotation.autowired.setter.SimpleMovieLister">
+	</bean>
+	<!-- multiplearguments -->
+	<bean id = "movieRecommenderMulArgs" class="com.bage.annotation.autowired.multiplearguments.MovieRecommender">
+	</bean>
 	
 </beans>

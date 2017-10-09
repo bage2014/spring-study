@@ -81,7 +81,9 @@ Shutting down the Spring IoC container gracefully in non-web applications
 
 ## 2017-10-08 22:10
 
+1.9.1. @Required
 
-
+1.9.2. @Autowired // TODO
+## 2017-10-10 0:6
 
         

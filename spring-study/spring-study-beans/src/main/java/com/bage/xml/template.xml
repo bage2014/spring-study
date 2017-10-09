@@ -12,7 +12,7 @@
                 http://www.springframework.org/schema/context
                 http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- 最基本的Bean对象 -->
+	<!-- 最基本的Bean对象 , 如果不指定id，默认为 packagename#0-->
 	<bean id="template" class="com.bage.Template">
 		<!-- collaborators and configuration for this bean go here -->
 	</bean>
