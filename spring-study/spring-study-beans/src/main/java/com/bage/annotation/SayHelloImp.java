@@ -1,8 +1,8 @@
-package com.bage.autowired;
+package com.bage.annotation;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service // 默认名字 sayHelloImp
 public class SayHelloImp implements SayHello {
 
 	/* (non-Javadoc)

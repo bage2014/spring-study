@@ -1,4 +1,4 @@
-package com.bage.autowired;
+package com.bage.annotation;
 
 public interface SayHello {
 

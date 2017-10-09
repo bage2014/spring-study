@@ -1,4 +1,4 @@
-package com.bage.autowired;
+package com.bage.annotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
