@@ -38,4 +38,11 @@
 	<bean id = "movieRecommenderMulArgs" class="com.bage.annotation.autowired.multiplearguments.MovieRecommender">
 	</bean>
 	
+	<bean class="com.bage.annotation.primary.xml.MovieCatalogFirst">
+	</bean>
+	<bean class="com.bage.annotation.primary.xml.MovieCatalogSecond" primary="true">
+	</bean>
+	
+	
+	
 </beans>

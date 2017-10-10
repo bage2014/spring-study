@@ -27,7 +27,7 @@ public class Main {
 		SimpleMovieLister simpleMovieLister = context.getBean("simpleMovieLister", SimpleMovieLister.class);
 		System.out.println(simpleMovieLister);
 		
-		// Autowired 自动注入 (xml)
+		// Autowired 
 		// 1.构造器注入 customerPreferenceDao 可以使用bean的xml配置进行配置|@Service|//@Component
 		MovieRecommender movieRecommender = context.getBean("movieRecommenderCon", MovieRecommender.class);
 		System.out.println(movieRecommender.getCustomerPreferenceDao());
@@ -55,6 +55,17 @@ public class Main {
 		// 9. movieRecommenderWellknownresolvable (@Component)
 		com.bage.annotation.autowired.wellknownresolvable.MovieRecommender movieRecommenderWellknownresolvable = context.getBean("movieRecommenderWellknownresolvable", com.bage.annotation.autowired.wellknownresolvable.MovieRecommender.class);
 		System.out.println(movieRecommenderWellknownresolvable);
+		
+		// @Primary
+		// 1.Autowired 
+		com.bage.annotation.primary.autowired.MovieRecommender movieRecommenderPriAuto = context.getBean("movieRecommenderPriAuto", com.bage.annotation.primary.autowired.MovieRecommender.class);
+		System.out.println(movieRecommenderPriAuto);
+		// 2.xml 
+		com.bage.annotation.primary.xml.MovieRecommender movieRecommenderPriXml = context.getBean("movieRecommenderPriXml", com.bage.annotation.primary.xml.MovieRecommender.class);
+		System.out.println(movieRecommenderPriXml);
+		// 3.java config
+		com.bage.annotation.primary.javaconfig.MovieRecommender movieRecommenderPriJavaconfig = context.getBean("movieRecommenderPriJavaconfig", com.bage.annotation.primary.javaconfig.MovieRecommender.class);
+		System.out.println(movieRecommenderPriJavaconfig);
 		
 	}
 

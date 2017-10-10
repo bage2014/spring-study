@@ -10,6 +10,7 @@ https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/core.htm
 启动容器：
 1.2.3. Using the container
 
+
 1.3. Bean overview
 
 1.3.1. Naming beans
@@ -17,6 +18,7 @@ https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/core.htm
 1.3.2. Instantiating beans
 配置基本bean：
 配置静态bean：
+
 
 1.4. Dependencies
 配置有依赖的bean：
@@ -45,6 +47,7 @@ bean | ref | idref | list | set | map | props | value | null
 1.4.6. Method injection(不推荐，先进行跳过)
 The preceding is not desirable, because the business code is aware of and coupled to the Spring Framework. Method Injection, a somewhat advanced feature of the Spring IoC container, allows this use case to be handled in a clean fashion.
 
+
 1.5. Bean scopes
 
 1.5.4. Request, session, application, and WebSocket scopes
@@ -53,6 +56,7 @@ The preceding is not desirable, because the business code is aware of and couple
 Choosing the type of proxy to create //TODO
 1.5.5. Custom scopes  //TODO
 ## 2017-09-28 22：00   
+
 
 1.6. Customizing the nature of a bean
 
@@ -66,6 +70,7 @@ Shutting down the Spring IoC container gracefully in non-web applications
 
 1.6.2. ApplicationContextAware and BeanNameAware //TODO
 
+
 1.7. Bean definition inheritance
 
 ## 2017-09-30 22：22
@@ -75,6 +80,7 @@ Shutting down the Spring IoC container gracefully in non-web applications
 1.8.2. Customizing configuration metadata with a BeanFactoryPostProcessor
 
 1.8.3. Customizing instantiation logic with a FactoryBean //TODO
+
 
 1.9. Annotation-based container configuration
 一般使用 <context:component-scan base-package="com.bage.autowired" /> 来代替 <context:annotation-config />
@@ -88,8 +94,7 @@ Shutting down the Spring IoC container gracefully in non-web applications
 ## 2017-10-10 0:6
 Autowired 注解的基本使用，包括setter方式、构造器、组合、数组集合、map、使用spring bean的使用
 
-
-
+1.9.3. Fine-tuning annotation-based autowiring with @Primary
 
 
 
