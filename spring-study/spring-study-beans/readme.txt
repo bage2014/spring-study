@@ -86,5 +86,14 @@ Shutting down the Spring IoC container gracefully in non-web applications
 
 1.9.2. @Autowired // TODO
 ## 2017-10-10 0:6
+Autowired 注解的基本使用，包括setter方式、构造器、组合、数组集合、map、使用spring bean的使用
+
+
+
+
+
+
+
+
 
         
