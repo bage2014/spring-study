@@ -78,6 +78,7 @@ Shutting down the Spring IoC container gracefully in non-web applications
 
 1.9. Annotation-based container configuration
 一般使用 <context:component-scan base-package="com.bage.autowired" /> 来代替 <context:annotation-config />
+如果xml和注解同时存在，注解优先级比较高
 
 ## 2017-10-08 22:10
 

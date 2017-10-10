@@ -27,7 +27,7 @@
 		<property name="movieFinder" ref="movieFinder" ></property>
 	</bean>
 	<!-- constructors -->
-	<bean id = "movieRecommender" class="com.bage.annotation.autowired.constructors.MovieRecommender">
+	<bean id = "movieRecommenderCon" class="com.bage.annotation.autowired.constructors.MovieRecommender">
 	</bean>
 	<bean class="com.bage.annotation.autowired.CustomerPreferenceDao">
 	</bean>

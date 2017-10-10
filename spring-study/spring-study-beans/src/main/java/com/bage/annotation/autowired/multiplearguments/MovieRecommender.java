@@ -3,6 +3,7 @@ package com.bage.annotation.autowired.multiplearguments;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bage.annotation.autowired.CustomerPreferenceDao;
+import com.bage.annotation.autowired.MovieCatalog;
 
 public class MovieRecommender {
 

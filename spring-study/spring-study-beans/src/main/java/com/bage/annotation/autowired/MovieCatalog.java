@@ -1,4 +1,4 @@
-package com.bage.annotation.autowired.multiplearguments;
+package com.bage.annotation.autowired;
 
 import org.springframework.stereotype.Component;
 
