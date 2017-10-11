@@ -96,9 +96,11 @@ Autowired 注解的基本使用，包括setter方式、构造器、组合、数�
 
 1.9.3. Fin-tuning annotation-based autowiring with @Primary
 Autowired、Java Config、xml
+## 2017-10-10 23:39
 
+1.9.4. Fine-tuning annotation-based autowiring with qualifiers
 
-
+You can create your own custom qualifier annotations. Simply define an annotation and provide the @Qualifier annotation within your definition:
 
 
         

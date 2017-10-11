@@ -38,11 +38,19 @@
 	<bean id = "movieRecommenderMulArgs" class="com.bage.annotation.autowired.multiplearguments.MovieRecommender">
 	</bean>
 	
+	<!-- primary -->
 	<bean class="com.bage.annotation.primary.xml.MovieCatalogFirst">
 	</bean>
 	<bean class="com.bage.annotation.primary.xml.MovieCatalogSecond" primary="true">
 	</bean>
 	
+	<!-- qualifiers -->
+	<bean class="com.bage.annotation.qualifiers.xml.MovieCatalogSun3">
+		<qualifier value="movieCatalogSun3"></qualifier>
+	</bean>
+	<bean class="com.bage.annotation.qualifiers.xml.MovieCatalogSun4">
+		<qualifier value="movieCatalogSun4"></qualifier>
+	</bean>
 	
 	
 </beans>

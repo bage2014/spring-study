@@ -1,7 +1,9 @@
 package com.bage.annotation;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import com.bage.Template;
 import com.bage.annotation.autowired.constructors.MovieRecommender;
@@ -66,6 +68,21 @@ public class Main {
 		// 3.java config
 		com.bage.annotation.primary.javaconfig.MovieRecommender movieRecommenderPriJavaconfig = context.getBean("movieRecommenderPriJavaconfig", com.bage.annotation.primary.javaconfig.MovieRecommender.class);
 		System.out.println(movieRecommenderPriJavaconfig);
+		
+		// @Qualifier
+		// 属性 @Qualifier("@ComponentValue")
+		com.bage.annotation.qualifiers.plaindescriptive.MovieRecommender movieRecommenderQualPlaindescriptive = context.getBean("movieRecommenderQualPlaindescriptive", com.bage.annotation.qualifiers.plaindescriptive.MovieRecommender.class);
+		System.out.println(movieRecommenderQualPlaindescriptive);
+		// 构造参数
+		com.bage.annotation.qualifiers.constructorarguments.MovieRecommender movieRecommenderQualConstructorarguments = context.getBean("movieRecommenderQualConstructorarguments", com.bage.annotation.qualifiers.constructorarguments.MovieRecommender.class);
+		System.out.println(movieRecommenderQualConstructorarguments);
+		// xml配置
+		com.bage.annotation.qualifiers.xml.MovieRecommender movieRecommenderQualxml = context.getBean("movieRecommenderQualxml", com.bage.annotation.qualifiers.xml.MovieRecommender.class);
+		System.out.println(movieRecommenderQualxml);
+		// 自定义
+		
+		
+		
 		
 	}
 
