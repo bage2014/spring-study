@@ -7,9 +7,7 @@
     <artifactId>spring-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.bage</groupId>
   <artifactId>spring-study-webmvc</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>spring-study-webmvc Maven Webapp</name>
   <url>http://maven.apache.org</url>

@@ -45,12 +45,28 @@
 	</bean>
 	
 	<!-- qualifiers -->
+	<!-- basic -->
 	<bean class="com.bage.annotation.qualifiers.xml.MovieCatalogSun3">
 		<qualifier value="movieCatalogSun3"></qualifier>
 	</bean>
 	<bean class="com.bage.annotation.qualifiers.xml.MovieCatalogSun4">
 		<qualifier value="movieCatalogSun4"></qualifier>
 	</bean>
-	
+	<!-- custom -->
+	<bean class="com.bage.annotation.qualifiers.custom.MovieCatalogSun1">
+		<qualifier type="com.bage.annotation.qualifiers.custom.GenreQualifier" value="Comedy"></qualifier>
+	</bean>
+	<bean class="com.bage.annotation.qualifiers.custom.MovieCatalogSun2">
+		<qualifier type="GenreQualifier" value="Comedy2"></qualifier>
+	</bean>
+	<bean class="com.bage.annotation.qualifiers.custom.MovieCatalogSun3">
+		<qualifier type="NoValueQualifier"></qualifier>
+	</bean>
+	<bean class="com.bage.annotation.qualifiers.custom.MovieCatalogSun4">
+		<qualifier type="AttributesQualifier">
+                        <attribute key="format" value="VHS"/>
+                        <attribute key="genre" value="Action"/>
+         </qualifier>
+	</bean>
 	
 </beans>

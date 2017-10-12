@@ -102,5 +102,6 @@ Autowired、Java Config、xml
 
 You can create your own custom qualifier annotations. Simply define an annotation and provide the @Qualifier annotation within your definition:
 
-
+## 2017-10-12 22:55
+1.9.5. Using generics as autowiring qualifiers
         

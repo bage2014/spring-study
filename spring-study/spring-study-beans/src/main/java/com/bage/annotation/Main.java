@@ -1,9 +1,7 @@
 package com.bage.annotation;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 
 import com.bage.Template;
 import com.bage.annotation.autowired.constructors.MovieRecommender;
@@ -79,8 +77,9 @@ public class Main {
 		// xml配置
 		com.bage.annotation.qualifiers.xml.MovieRecommender movieRecommenderQualxml = context.getBean("movieRecommenderQualxml", com.bage.annotation.qualifiers.xml.MovieRecommender.class);
 		System.out.println(movieRecommenderQualxml);
-		// 自定义
-		
+		// 自定义(基本+属性)
+		com.bage.annotation.qualifiers.custom.MovieRecommender movieRecommenderCustom = context.getBean("movieRecommenderCustom", com.bage.annotation.qualifiers.custom.MovieRecommender.class);
+		System.out.println(movieRecommenderCustom);
 		
 		
 		
