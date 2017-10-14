@@ -82,10 +82,14 @@ public class Main {
 		System.out.println(movieRecommenderCustom);
 		
 		// 泛型
-		com.bage.annotation.qualifiers.generics.MovieRecommender movieRecommenderGenerics = context.getBean("movieRecommenderGenerics", com.bage.annotation.qualifiers.generics.MovieRecommender.class);
+		com.bage.annotation.generics.MovieRecommender movieRecommenderGenerics = context.getBean("movieRecommenderGenerics", com.bage.annotation.generics.MovieRecommender.class);
 		System.out.println(movieRecommenderGenerics);
-				
-				
+		
+		// resource == 类似于 Autowired + Qualifier
+		com.bage.annotation.resource.SimpleMovieLister simpleMovieListerResource = context.getBean("simpleMovieListerResource", com.bage.annotation.resource.SimpleMovieLister.class);
+		System.out.println(simpleMovieListerResource);
+		com.bage.annotation.resource.MovieRecommender movieRecommenderResource = context.getBean("movieRecommenderResource", com.bage.annotation.resource.MovieRecommender.class);
+		System.out.println(movieRecommenderResource);
 		
 	}
 

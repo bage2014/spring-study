@@ -1,4 +1,4 @@
-package com.bage.annotation.qualifiers.generics;
+package com.bage.annotation.generics;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -106,5 +106,12 @@ You can create your own custom qualifier annotations. Simply define an annotatio
 1.9.5. Using generics as autowiring qualifiers
 ## 2017-10-14 12:39        
         
-1.9.6. CustomAutowireConfigurer       
+1.9.6. CustomAutowireConfigurer 
+// TODO // TODO     
+ 
+1.9.7. @Resource       
+ 类似于 Autowired + Qualifier     
+      
+1.9.8. @PostConstruct and @PreDestroy
+## 2017-10-24 23:21  
         

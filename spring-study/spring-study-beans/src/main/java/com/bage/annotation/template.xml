@@ -69,4 +69,14 @@
          </qualifier>
 	</bean>
 	
+	<!-- CustomAutowireConfigurer -->
+	<bean id="customAutowireConfigurer"
+                class="org.springframework.beans.factory.annotation.CustomAutowireConfigurer">
+        <property name="customQualifierTypes">
+                <set>
+                        <value>com.bage.annotation.qualifiers.customautowireconfigurer.CustomQualifier</value>
+                </set>
+        </property>
+	</bean>
+	
 </beans>
