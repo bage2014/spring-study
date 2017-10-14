@@ -104,4 +104,7 @@ You can create your own custom qualifier annotations. Simply define an annotatio
 
 ## 2017-10-12 22:55
 1.9.5. Using generics as autowiring qualifiers
+## 2017-10-14 12:39        
+        
+1.9.6. CustomAutowireConfigurer       
         

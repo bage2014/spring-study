@@ -81,7 +81,11 @@ public class Main {
 		com.bage.annotation.qualifiers.custom.MovieRecommender movieRecommenderCustom = context.getBean("movieRecommenderCustom", com.bage.annotation.qualifiers.custom.MovieRecommender.class);
 		System.out.println(movieRecommenderCustom);
 		
-		
+		// 泛型
+		com.bage.annotation.qualifiers.generics.MovieRecommender movieRecommenderGenerics = context.getBean("movieRecommenderGenerics", com.bage.annotation.qualifiers.generics.MovieRecommender.class);
+		System.out.println(movieRecommenderGenerics);
+				
+				
 		
 	}
 
