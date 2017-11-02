@@ -112,6 +112,16 @@ You can create your own custom qualifier annotations. Simply define an annotatio
 1.9.7. @Resource       
  类似于 Autowired + Qualifier     
       
-1.9.8. @PostConstruct and @PreDestroy
+1.9.8. @PostConstruct and @PreDestroy 生命周期监控，单个bean
 ## 2017-10-24 23:21  
+
+
+1.10. Classpath scanning and managed components
+## 2017-11-02 23:53
+
+
+
+
+
+
         

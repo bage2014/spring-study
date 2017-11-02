@@ -1,10 +1,12 @@
 package com.bage.annotation;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bage.Template;
 import com.bage.annotation.autowired.constructors.MovieRecommender;
+import com.bage.annotation.lifecyclecallbacks.CachingMovieLister;
 import com.bage.annotation.required.SimpleMovieLister;
 
 public class Main {
@@ -90,6 +92,12 @@ public class Main {
 		System.out.println(simpleMovieListerResource);
 		com.bage.annotation.resource.MovieRecommender movieRecommenderResource = context.getBean("movieRecommenderResource", com.bage.annotation.resource.MovieRecommender.class);
 		System.out.println(movieRecommenderResource);
+		
+		// lifecyclecallbacks, 生命周期回调函数
+		ConfigurableApplicationContext cxt = new ClassPathXmlApplicationContext(beansFilePathStr); 
+		CachingMovieLister cachingMovieLister = cxt.getBean("cachingMovieLister", CachingMovieLister.class);
+		System.out.println(cachingMovieLister);
+		cxt.registerShutdownHook();
 		
 	}
 
