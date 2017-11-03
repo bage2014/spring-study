@@ -99,6 +99,19 @@ public class Main {
 		System.out.println(cachingMovieLister);
 		cxt.registerShutdownHook();
 		
+		// Meta-annotations (略)
+		// Spring provides further stereotype annotations: @Component, @Service, and @Controller
+		
+		// Automatically detecting classes and registering bean definitions
+		com.bage.annotation.registeringbean.SimpleMovieLister javaConfigSimpleMovieLister = cxt.getBean("registeringbeanSimpleMovieLister", com.bage.annotation.registeringbean.SimpleMovieLister.class);
+		System.out.println(javaConfigSimpleMovieLister);
+		
+		// Using filters to customize scanning
+		// 参考：com.bage.annotation.filtersscanning.AppConfig
+		// 参考：/spring-study-beans/src/main/java/com/bage/annotation/filtersscanning/filter.xml
+		
+		
+		
 	}
 
 }

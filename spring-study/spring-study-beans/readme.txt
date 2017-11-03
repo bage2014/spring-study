@@ -118,6 +118,8 @@ You can create your own custom qualifier annotations. Simply define an annotatio
 
 1.10. Classpath scanning and managed components
 ## 2017-11-02 23:53
+Spring provides further stereotype annotations: @Component, @Service, and @Controller
+
 
 
 
