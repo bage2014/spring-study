@@ -6,16 +6,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bage.Template;
 import com.bage.annotation.autowired.constructors.MovieRecommender;
+import com.bage.annotation.beanannotation.FactoryMethodComponent;
+import com.bage.annotation.beanannotation.TestBean;
 import com.bage.annotation.lifecyclecallbacks.CachingMovieLister;
 import com.bage.annotation.required.SimpleMovieLister;
 
 public class Main {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		String beansFilePathStr[] = { "classpath:com/bage/annotation/template.xml" };
 
 		// 加载 spring 容器
-		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext(beansFilePathStr);
 		// 获取一个基本bean
 		Template template = context.getBean("template", Template.class);
@@ -110,6 +112,11 @@ public class Main {
 		// 参考：com.bage.annotation.filtersscanning.AppConfig
 		// 参考：/spring-study-beans/src/main/java/com/bage/annotation/filtersscanning/filter.xml
 		
+		// Defining bean metadata within components 类似于JavaConfig
+		FactoryMethodComponent factoryMethodComponent = cxt.getBean("factoryMethodComponent", FactoryMethodComponent.class);
+		factoryMethodComponent.doWork();
+		TestBean TestBean = cxt.getBean("testBean", TestBean.class);
+		System.out.println("-----:" + TestBean);
 		
 		
 	}

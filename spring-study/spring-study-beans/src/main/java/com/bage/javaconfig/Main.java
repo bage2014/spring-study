@@ -7,6 +7,7 @@ import com.bage.javaconfig.basic.SimpleMovieLister;
 
 public class Main {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 			
 		ApplicationContext cxt = new ClassPathXmlApplicationContext(); 

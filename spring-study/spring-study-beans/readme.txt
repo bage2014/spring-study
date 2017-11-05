@@ -120,10 +120,19 @@ You can create your own custom qualifier annotations. Simply define an annotatio
 ## 2017-11-02 23:53
 Spring provides further stereotype annotations: @Component, @Service, and @Controller
 
+1.10.1. @Component and further stereotype annotations
 
+1.10.2. Meta-annotations
 
+1.10.3. Automatically detecting classes and registering bean definitions
 
+1.10.4. Using filters to customize scanning
 
+1.10.5. Defining bean metadata within components
+2017-11-03 22:12 
+
+1.10.6. Naming autodetected components
+2017-11-15 10:24
 
 
         
