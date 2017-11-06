@@ -133,6 +133,21 @@ Spring provides further stereotype annotations: @Component, @Service, and @Contr
 
 1.10.6. Naming autodetected components
 2017-11-15 10:24
+// TODO 将源码进行反编译改写，没有效果 // 进入了两次的generateBeanName方法
+
+1.10.7. Providing a scope for autodetected components
+// TODO MyScopeResolver 未实现
+
+1.10.8. Providing qualifier metadata with annotations
+
+1.10.9. Generating an index of candidate components
+// 未实现
+## 2017-11-06 23:31
+
+1.11. Using JSR 330 Standard Annotations
+
+
+
 
 
         

@@ -118,6 +118,19 @@ public class Main {
 		TestBean TestBean = cxt.getBean("testBean", TestBean.class);
 		System.out.println("-----:" + TestBean);
 		
+		// Naming autodetected components
+		com.bage.annotation.namingcomponents.Bean bean = cxt.getBean("bean", com.bage.annotation.namingcomponents.Bean.class);
+		System.out.println(bean);
+		com.bage.annotation.namingcomponents.Bean bean2 = cxt.getBean("com.bage.annotation.namingcomponents.Bean", com.bage.annotation.namingcomponents.Bean.class);
+		System.out.println(bean2);
+		
+		// Providing a scope for autodetected components (略)
+		// 参考 com.bage.annotation.scopecomponents.MovieFinderImpl
+		
+		// Providing qualifier metadata with annotations
+		com.bage.annotation.qualifiers.custom.ActionMovieCatalog actionMovieCatalog = cxt.getBean("customActionMovieCatalog", com.bage.annotation.qualifiers.custom.ActionMovieCatalog.class);
+		System.out.println(actionMovieCatalog);
+		
 		
 	}
 
