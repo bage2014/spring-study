@@ -5,7 +5,7 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 	
-	<!-- scope 配置开始 -->
+	<!-- 配置开始 -->
 	<listener>
 		<listener-class>
 			org.springframework.web.context.ContextLoaderListener
@@ -25,6 +25,57 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:src.xml</param-value>
 	</context-param>
-	<!-- scope 配置结束 -->
+	<!-- 配置结束 -->
 	
+	
+	<!-- JavaConfig -->
+	<!-- Configure ContextLoaderListener to use AnnotationConfigWebApplicationContext
+                instead of the default XmlWebApplicationContext -->
+        <context-param>
+                <param-name>contextClass</param-name>
+                <param-value>
+                        org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+                </param-value>
+        </context-param>
+
+        <!-- Configuration locations must consist of one or more comma- or space-delimited
+                fully-qualified @Configuration classes. Fully-qualified packages may also be
+                specified for component-scanning -->
+        <context-param>
+                <param-name>contextConfigLocation</param-name>
+                <param-value>com.bage.javaconfig.basic.AppConfig</param-value>
+        </context-param>
+
+        <!-- Bootstrap the root application context as usual using ContextLoaderListener -->
+        <listener>
+                <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+
+        <!-- Declare a Spring MVC DispatcherServlet as usual -->
+        <servlet>
+                <servlet-name>dispatcher</servlet-name>
+                <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+                <!-- Configure DispatcherServlet to use AnnotationConfigWebApplicationContext
+                        instead of the default XmlWebApplicationContext -->
+                <init-param>
+                        <param-name>contextClass</param-name>
+                        <param-value>
+                                org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+                        </param-value>
+                </init-param>
+                <!-- Again, config locations must consist of one or more comma- or space-delimited
+                        and fully-qualified @Configuration classes -->
+                <init-param>
+                        <param-name>contextConfigLocation</param-name>
+                        <param-value>com.bage.javaconfig.basic.WebMVCConfig</param-value>
+                </init-param>
+        </servlet>
+
+        <!-- map all requests for /app/* to the dispatcher servlet -->
+        <servlet-mapping>
+                <servlet-name>dispatcher</servlet-name>
+                <url-pattern>/app/*</url-pattern>
+        </servlet-mapping>
+        <!-- JavaConfig -->
+        
 </web-app>

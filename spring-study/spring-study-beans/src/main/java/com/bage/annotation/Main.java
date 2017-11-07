@@ -121,7 +121,7 @@ public class Main {
 		// Naming autodetected components
 		com.bage.annotation.namingcomponents.Bean bean = cxt.getBean("bean", com.bage.annotation.namingcomponents.Bean.class);
 		System.out.println(bean);
-		com.bage.annotation.namingcomponents.Bean bean2 = cxt.getBean("com.bage.annotation.namingcomponents.Bean", com.bage.annotation.namingcomponents.Bean.class);
+		com.bage.annotation.namingcomponents.Bean bean2 = cxt.getBean("bage.bean", com.bage.annotation.namingcomponents.Bean.class);
 		System.out.println(bean2);
 		
 		// Providing a scope for autodetected components (略)
@@ -131,6 +131,10 @@ public class Main {
 		com.bage.annotation.qualifiers.custom.ActionMovieCatalog actionMovieCatalog = cxt.getBean("customActionMovieCatalog", com.bage.annotation.qualifiers.custom.ActionMovieCatalog.class);
 		System.out.println(actionMovieCatalog);
 		
+		// Using JSR 330 Standard Annotations // 详见官网
+		com.bage.annotation.standardannotations.SimpleMovieLister standardannotationsSimpleMovieLister = cxt.getBean("standardannotationsSimpleMovieLister", com.bage.annotation.standardannotations.SimpleMovieLister.class);
+		System.out.println(standardannotationsSimpleMovieLister);
+				
 		
 	}
 

@@ -73,6 +73,13 @@
 			<version>${spring.base.version}</version>
 		</dependency>
 
+		<!-- 2017-11-07 21:31 for spring-study-beans 1.11. Using JSR 330 Standard Annotations -->
+		<dependency>
+		    <groupId>javax.inject</groupId>
+		    <artifactId>javax.inject</artifactId>
+		    <version>1</version>
+		</dependency>
+
 	</dependencies>
 
 	<modules>

@@ -1,6 +1,7 @@
 package com.bage.annotation.autowired.mix;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.bage.annotation.autowired.CustomerPreferenceDao;
@@ -15,7 +16,7 @@ public class MovieRecommender {
     private MovieCatalog movieCatalog;
 
     @Autowired
-    public MovieRecommender(CustomerPreferenceDao customerPreferenceDao) {
+    public MovieRecommender(@Qualifier("autowiredCustomerPreferenceDao") CustomerPreferenceDao customerPreferenceDao) {
             this.customerPreferenceDao = customerPreferenceDao;
     }
 

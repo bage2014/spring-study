@@ -144,9 +144,20 @@ Spring provides further stereotype annotations: @Component, @Service, and @Contr
 // 未实现
 ## 2017-11-06 23:31
 
+
 1.11. Using JSR 330 Standard Annotations
 
+1.11.1. Dependency Injection with @Inject and @Named
+1.11.2. @Named and @ManagedBean: standard equivalents to the @Component annotation
+1.11.3. Limitations of JSR-330 standard annotations //详见官网
 
+
+1.12. Java-based container configuration
+
+1.12.1. Basic concepts: @Bean and @Configuration
+
+1.12.2. Instantiating the Spring container using AnnotationConfigApplicationContext
+## 2017-11-07 23:30
 
 
 
