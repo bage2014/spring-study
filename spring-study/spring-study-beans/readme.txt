@@ -159,6 +159,11 @@ Spring provides further stereotype annotations: @Component, @Service, and @Contr
 1.12.2. Instantiating the Spring container using AnnotationConfigApplicationContext
 ## 2017-11-07 23:30
 
+Support for web applications with AnnotationConfigWebApplicationContext 
+// TODO 当存在两个dispatcher时候访问不到
 
+1.12.3. Using the @Bean annotation
+
+## 2017-11-09 23:32
 
         

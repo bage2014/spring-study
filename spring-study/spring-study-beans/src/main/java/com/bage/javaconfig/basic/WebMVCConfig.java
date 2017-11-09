@@ -10,6 +10,7 @@ public class WebMVCConfig {
 
         @Bean
         public MyService myService() {
+        	System.out.println("myService() is work");
                 return new MyServiceImpl();
         }
 
