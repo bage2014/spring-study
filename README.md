@@ -8,3 +8,7 @@ spring学习项目
         https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/web.html#mvc-servlet
         
 错误：缺少jstl依赖
+
+
+系统学习spring的基本知识点；
+现在正在学习spring-beans 中
