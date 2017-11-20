@@ -3,8 +3,13 @@ package com.bage.javaconfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.bage.javaconfig.Composing.SystemTestConfig;
+import com.bage.javaconfig.Composing.TransferService;
 import com.bage.javaconfig.basic.AppConfig;
+import com.bage.javaconfig.basic.Foo;
 import com.bage.javaconfig.basic.MyService;
+import com.bage.javaconfig.configuration.AsyncCommand;
+import com.bage.javaconfig.configuration.CommandManager;
 
 public class Main {
 
@@ -40,18 +45,45 @@ public class Main {
 
 
 		   ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-		   MyService myService = ctx.getBean(MyService.class);
-		   myService.doStuff();
+		   
 		   
 		   // Support for web applications with AnnotationConfigWebApplicationContext
 		   // 详见web.xml ,但是存在一些问题，待修正
 		   
 		   // 1.12.3. 对 @Bean 注解的使用
 		   // @Bean annotation in a @Configuration-annotated or in a @Component-annotated class.
-		   // 详见 com.bage.javaconfig.basic.AppConfig，基本的配置;
+		   // 详见 com.bage.javaconfig.basic.AppConfig，基本的配置 和 readme.txt;
+		   MyService myService = ctx.getBean(MyService.class);
+		   myService.doStuff();
 		   
 		   // 1.12.4. 使用@Configuration注解
 		   // 详见 com.bage.javaconfig.basic.AppConfig，基本的配置;
+		   Foo foo = ctx.getBean(Foo.class);
+		   System.out.println(foo.toString());
+		   // Lookup method injection
+		   AsyncCommand AayncCommand = ctx.getBean(AsyncCommand.class);
+		   System.out.println(AayncCommand);
+		   AayncCommand = ctx.getBean(AsyncCommand.class);
+		   System.out.println(AayncCommand);
+		   CommandManager commandManager = ctx.getBean(CommandManager.class);
+		   System.out.println(commandManager);
+		   commandManager = ctx.getBean(CommandManager.class);
+		   System.out.println(commandManager);
+		   // Further information about how Java-based configuration works internally
+		   Object clientService = ctx.getBean("clientService1");
+		   System.out.println(clientService);
+		   clientService = ctx.getBean("clientService2");
+		   System.out.println(clientService);
+		   
+		   // 1.12.5. Composing Java-based configurations
+		   // Using the @Import annotation
+		   // ApplicationContext ctxImport = new AnnotationConfigApplicationContext(ConfigB.class);
+		   // Injecting dependencies on imported @Bean definitions
+		   ctx = new AnnotationConfigApplicationContext(SystemTestConfig.class);
+	       TransferService transferService = ctx.getBean(TransferService.class);
+	       System.out.println(transferService);
+	       // Conditionally include @Configuration classes or @Bean methods
+	        
 		   
 	}
 

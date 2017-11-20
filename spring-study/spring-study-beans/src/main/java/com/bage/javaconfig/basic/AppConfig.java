@@ -30,5 +30,13 @@ public class AppConfig {
 		return new MyServiceImpl();
 	}
 
+	@Bean
+    public Foo foo() {
+            return new Foo(bar());
+    }
+	@Bean
+    public Bar bar() {
+            return new Bar();
+    }
 }
 

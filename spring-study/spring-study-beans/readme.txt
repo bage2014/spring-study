@@ -163,7 +163,23 @@ Support for web applications with AnnotationConfigWebApplicationContext
 // TODO 当存在两个dispatcher时候访问不到
 
 1.12.3. Using the @Bean annotation
+Declaring a bean
+Receiving lifecycle callbacks
+Specifying bean scope
+Customizing bean naming
+Bean aliasing
+Bean description
 
 ## 2017-11-09 23:32
-dddd
+
+1.12.4. Using the @Configuration annotation
+Lookup method injection
+Further information about how Java-based configuration works internally
+
+1.12.5. Composing Java-based configurations
+Using the @Import annotation
+Injecting dependencies on imported @Bean definitions
+## 2017-11-29 22:49
+Conditionally include @Configuration classes or @Bean methods
+
         
