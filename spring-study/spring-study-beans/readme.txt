@@ -179,7 +179,18 @@ Further information about how Java-based configuration works internally
 1.12.5. Composing Java-based configurations
 Using the @Import annotation
 Injecting dependencies on imported @Bean definitions
+
+
 ## 2017-11-29 22:49
 Conditionally include @Configuration classes or @Bean methods
+// 未实现
+
+Combining Java and XML configuration
+XML-centric use of @Configuration classes
+@Configuration class-centric use of XML with @ImportResource
+
+
+1.13. Environment abstraction
+
 
         

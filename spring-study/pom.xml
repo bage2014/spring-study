@@ -80,6 +80,13 @@
 		    <version>1</version>
 		</dependency>
 
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${spring.base.version}</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<modules>

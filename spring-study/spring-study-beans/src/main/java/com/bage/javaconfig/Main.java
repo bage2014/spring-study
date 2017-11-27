@@ -1,8 +1,12 @@
 package com.bage.javaconfig;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.bage.javaconfig.Composing.AccountRepository;
 import com.bage.javaconfig.Composing.SystemTestConfig;
 import com.bage.javaconfig.Composing.TransferService;
 import com.bage.javaconfig.basic.AppConfig;
@@ -83,8 +87,19 @@ public class Main {
 	       TransferService transferService = ctx.getBean(TransferService.class);
 	       System.out.println(transferService);
 	       // Conditionally include @Configuration classes or @Bean methods
-	        
-		   
+	       // 未实现
+	       
+	       // Combining Java and XML configuration
+	       ApplicationContext ctt = new ClassPathXmlApplicationContext("classpath:/com/bage/javaconfig/combining/system-test-config.xml");
+           AccountRepository combiningAccountRepository = ctt.getBean("combiningAccountRepository",AccountRepository.class);
+           System.out.println(combiningAccountRepository);
+           ctt = new AnnotationConfigApplicationContext(com.bage.javaconfig.importresource.AppConfig.class);
+           DataSource importresourceDataSource = ctt.getBean("importresourceDataSource",DataSource.class);
+           System.out.println(importresourceDataSource);
+           
+           
+           
+           
 	}
 
 }
