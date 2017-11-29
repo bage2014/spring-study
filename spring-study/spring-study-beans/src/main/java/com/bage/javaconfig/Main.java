@@ -14,6 +14,9 @@ import com.bage.javaconfig.basic.Foo;
 import com.bage.javaconfig.basic.MyService;
 import com.bage.javaconfig.configuration.AsyncCommand;
 import com.bage.javaconfig.configuration.CommandManager;
+import com.bage.javaconfig.profile.JndiDataConfig;
+import com.bage.javaconfig.profile.StandaloneDataConfig;
+import com.bage.javaconfig.profile.methodlevel.Dao;
 
 public class Main {
 
@@ -97,7 +100,22 @@ public class Main {
            DataSource importresourceDataSource = ctt.getBean("importresourceDataSource",DataSource.class);
            System.out.println(importresourceDataSource);
            
-           
+           // Profile // 没有完全按照官网
+           // 类级别
+           AnnotationConfigApplicationContext ctxx = new AnnotationConfigApplicationContext();
+           ctxx.getEnvironment().setActiveProfiles(new String[]{"production"});
+           ctxx.register(StandaloneDataConfig.class, JndiDataConfig.class);
+           ctxx.refresh();
+           DataSource dataSource = ctxx.getBean("profileDataSource",DataSource.class);
+           System.out.println(dataSource);
+           // 方法级别
+           ctxx = new AnnotationConfigApplicationContext();
+           //ctxx.getEnvironment().setActiveProfiles("production");// or development
+           ctxx.register(com.bage.javaconfig.profile.methodlevel.AppConfig.class);
+           ctxx.refresh();
+           Dao methodlevelDao =  (Dao) ctxx.getBean("methodlevelDao");
+           methodlevelDao.todo();
+           // xml 配置
            
            
 	}

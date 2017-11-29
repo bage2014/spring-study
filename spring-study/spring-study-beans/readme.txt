@@ -192,5 +192,7 @@ XML-centric use of @Configuration classes
 
 1.13. Environment abstraction
 
+1.13.1. Bean definition profiles
+
 
         
