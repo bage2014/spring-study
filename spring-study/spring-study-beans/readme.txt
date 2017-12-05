@@ -194,5 +194,12 @@ XML-centric use of @Configuration classes
 
 1.13.1. Bean definition profiles
 
+1.13.2. PropertySource abstraction
+
+1.13.3. @PropertySource
+
+## 2017-12-05 22:19
+1.13.4. Placeholder resolution in statements
+
 
         

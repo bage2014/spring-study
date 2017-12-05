@@ -4,7 +4,11 @@ import javax.sql.DataSource;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.MutablePropertySources;
 
 import com.bage.javaconfig.Composing.AccountRepository;
 import com.bage.javaconfig.Composing.SystemTestConfig;
@@ -17,6 +21,7 @@ import com.bage.javaconfig.configuration.CommandManager;
 import com.bage.javaconfig.profile.JndiDataConfig;
 import com.bage.javaconfig.profile.StandaloneDataConfig;
 import com.bage.javaconfig.profile.methodlevel.Dao;
+import com.bage.javaconfig.propertySource.TestBean;
 
 public class Main {
 
@@ -116,8 +121,42 @@ public class Main {
            Dao methodlevelDao =  (Dao) ctxx.getBean("methodlevelDao");
            methodlevelDao.todo();
            // xml 配置
-           
-           
+           String beansFilePathStr[] = {
+   				"classpath:com/bage/javaconfig/profile/xml/development.xml", // src目录
+   				"classpath:com/bage/javaconfig/profile/xml/production.xml",
+   				"classpath:com/bage/javaconfig/profile/xml/default.xml",
+           };
+	        ClassPathXmlApplicationContext context =
+	   		        new ClassPathXmlApplicationContext(beansFilePathStr);
+	   		//context.getEnvironment().setActiveProfiles("development");
+	   		context.getEnvironment().setActiveProfiles("default");
+	           // ctxx.register(SomeConfig.class, StandaloneDataConfig.class, JndiDataConfig.class);
+	   		context.refresh();
+	   		System.out.println(context.getBean("baseTestDao"));  
+	   		
+	   		// 1.13.2. PropertySource abstraction
+	   		Environment env = ctx.getEnvironment();
+	   		boolean containsFoo = env.containsProperty("foo");
+	   		System.out.println("Does my environment contain the 'foo' property? " + containsFoo);
+	   		
+	   		MutablePropertySources sources = ((ConfigurableEnvironment) env).getPropertySources();
+	   		System.out.println(sources.size());
+	   		
+	   		// 方法级别
+	        ctxx = new AnnotationConfigApplicationContext();
+	        ctxx.register(com.bage.javaconfig.propertySource.AppConfig.class);
+	        ctxx.refresh();
+	        System.out.println(ctxx.getEnvironment().getProperty("name"));
+	        // 注入属性
+	        System.out.println(ctxx.getBean("propertySourceTestBean"));
+	        // 或者
+	        ((TestBean)ctxx.getBean("propertySourceTestBean")).setName(env.getProperty("testbean.name"));
+	        
+	        // TODO
+	        // @PropertySource("classpath:/com/${my.placeholder:default/path}/app.properties")
+
+	        
+	        
 	}
 
 }
