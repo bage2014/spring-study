@@ -73,6 +73,12 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.base.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-instrument</artifactId>
+		    <version>${spring.base.version}</version>
+		</dependency>
+
 
 		<!-- 2017-11-07 21:31 for spring-study-beans 1.11. Using JSR 330 Standard Annotations -->
 		<dependency>

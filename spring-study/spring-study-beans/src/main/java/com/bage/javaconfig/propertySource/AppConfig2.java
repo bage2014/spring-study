@@ -7,11 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @ComponentScan(basePackageClasses=TestBean.class)
-@Configuration("propertySourceAppConfig")
-@PropertySource("classpath:com/bage/javaconfig/propertySource/app.properties")
-// @PropertySource("classpath:com/bage/${my.placeholder:javaconfig}/propertySource/app.properties")
-// 还可以这样用
-public class AppConfig {
+@Configuration("propertySourceAppConfig2")
+@PropertySource("classpath:com/bage/${my.placeholder:javaconfig}/propertySource/app.properties")
+public class AppConfig2 {
 	
 	@Autowired
 	Environment env;

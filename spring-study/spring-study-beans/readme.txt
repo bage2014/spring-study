@@ -201,5 +201,12 @@ XML-centric use of @Configuration classes
 ## 2017-12-05 22:19
 1.13.4. Placeholder resolution in statements
 
+1.14. Registering a LoadTimeWeaver
+
+1.15. Additional Capabilities of the ApplicationContext
+
+1.15.1. Internationalization using MessageSource
+## 2017-12-09 21：18
+
 
         

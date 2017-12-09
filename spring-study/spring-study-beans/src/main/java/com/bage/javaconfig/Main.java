@@ -3,8 +3,8 @@ package com.bage.javaconfig;
 import javax.sql.DataSource;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
@@ -151,11 +151,27 @@ public class Main {
 	        System.out.println(ctxx.getBean("propertySourceTestBean"));
 	        // 或者
 	        ((TestBean)ctxx.getBean("propertySourceTestBean")).setName(env.getProperty("testbean.name"));
-	        
-	        // TODO
 	        // @PropertySource("classpath:/com/${my.placeholder:default/path}/app.properties")
-
+	        ctxx = new AnnotationConfigApplicationContext();
+	        ctxx.register(com.bage.javaconfig.propertySource.AppConfig2.class);
+	        ctxx.refresh();
+	        System.out.println(ctxx.getEnvironment().getProperty("name"));
+	        System.out.println(ctxx.getEnvironment().getProperty("my.placeholder"));
+	        // xml配置：<import resource="com/bank/service/${customer}-config.xml"/>
 	        
+	        // Registering a LoadTimeWeaver
+	        // TODO
+	        // 失败，详情参考： com.bage.javaconfig.loadtimeweaver.LoadTimeWeaverAppConfig
+	
+	        // 1.15. Additional Capabilities of the ApplicationContext
+	        
+	        // MessageSource
+	        MessageSource resources = new ClassPathXmlApplicationContext("classpath:com/bage/javaconfig/messageSource/messageSource.xml");
+	        System.out.println(resources.getMessage("message", null, "Default", null));
+	
+	        ApplicationContext ctxxs = new ClassPathXmlApplicationContext("classpath:com/bage/javaconfig/messageSource/messageSource.xml");
+	        System.out.println(ctxxs.getEnvironment().getProperty("message"));
+	        // TODO 未完成
 	        
 	}
 
