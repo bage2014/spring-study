@@ -1,5 +1,7 @@
 package com.bage.javaconfig;
 
+import java.util.Locale;
+
 import javax.sql.DataSource;
 
 import org.springframework.context.ApplicationContext;
@@ -165,13 +167,15 @@ public class Main {
 	
 	        // 1.15. Additional Capabilities of the ApplicationContext
 	        
-	        // MessageSource
+	        // MessageSource (跟官网存在一些差异,同样也可以当成普通bean注入到各个类当中)
 	        MessageSource resources = new ClassPathXmlApplicationContext("classpath:com/bage/javaconfig/messageSource/messageSource.xml");
-	        System.out.println(resources.getMessage("message", null, "Default", null));
-	
-	        ApplicationContext ctxxs = new ClassPathXmlApplicationContext("classpath:com/bage/javaconfig/messageSource/messageSource.xml");
-	        System.out.println(ctxxs.getEnvironment().getProperty("message"));
-	        // TODO 未完成
+	        System.out.println(resources.getMessage("message", new String[]{"bage,"}, Locale.ENGLISH));
+	        System.out.println(resources.getMessage("message", new String[]{"bage,"}, Locale.CHINESE));
+	        System.out.println(resources.getMessage("messageformat", null, Locale.getDefault()));
+	        System.out.println(resources.getMessage("messageformat", null, Locale.ENGLISH));
+
+	        
+	        
 	        
 	}
 

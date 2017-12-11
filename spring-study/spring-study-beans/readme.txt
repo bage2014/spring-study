@@ -208,5 +208,7 @@ XML-centric use of @Configuration classes
 1.15.1. Internationalization using MessageSource
 ## 2017-12-09 21：18
 
+1.15.2. Standard and Custom Events
+## 2017-12-11 21：55
 
         
