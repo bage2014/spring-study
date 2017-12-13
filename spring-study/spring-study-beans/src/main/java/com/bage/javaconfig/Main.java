@@ -167,16 +167,30 @@ public class Main {
 	
 	        // 1.15. Additional Capabilities of the ApplicationContext
 	        
+	        // 1.15.1. Internationalization using MessageSource
 	        // MessageSource (跟官网存在一些差异,同样也可以当成普通bean注入到各个类当中)
 	        MessageSource resources = new ClassPathXmlApplicationContext("classpath:com/bage/javaconfig/messageSource/messageSource.xml");
 	        System.out.println(resources.getMessage("message", new String[]{"bage,"}, Locale.ENGLISH));
 	        System.out.println(resources.getMessage("message", new String[]{"bage,"}, Locale.CHINESE));
 	        System.out.println(resources.getMessage("messageformat", null, Locale.getDefault()));
 	        System.out.println(resources.getMessage("messageformat", null, Locale.ENGLISH));
+	        
+	        // 1.15.2. Standard and Custom Events 
+	        // TODO
+	        // Annotation-based Event Listeners
+	        // Asynchronous Listeners
+	        
+	        // 1.15.3. Convenient access to low-level resources
+	        
+	        // 1.15.4. Convenient ApplicationContext instantiation for web applications
+	        // 详见： /spring-study-beans/src/main/webapp/WEB-INF/web-applicationcontext.xml
+	        // 启动服务：访问--com.bage.javaconfig.applicationcontext.HelloController 
+	        // context-param 只能有一个？？
+	        
+	        // 1.16. The BeanFactory  ## 尚未开始
 
-	        
-	        
-	        
+
+	       
 	}
 
 }

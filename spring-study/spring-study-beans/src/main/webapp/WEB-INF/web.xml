@@ -19,12 +19,14 @@
 	<servlet-mapping>
 		<servlet-name>example</servlet-name>
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>	 
-	<!-- 指定Spring Bean的配置文件所在目录。默认配置在/WEB-INF/applicationContext.xml目录下 -->
+	</servlet-mapping>	
+	
+	<!-- context-param 只能有一个？？ 指定Spring Bean的配置文件所在目录。默认配置在/WEB-INF/applicationContext.xml目录下 -->
+	<!-- 多个中间用空格隔开 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:src.xml</param-value>
-	</context-param>
+		<param-value>classpath:src.xml classpath:src2.xml</param-value>
+	</context-param> 
 	<!-- 配置结束 -->
 	
 	
