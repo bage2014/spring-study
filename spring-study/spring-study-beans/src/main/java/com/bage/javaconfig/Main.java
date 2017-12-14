@@ -4,6 +4,11 @@ import java.util.Locale;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionStoreException;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,6 +16,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.MutablePropertySources;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 
 import com.bage.javaconfig.Composing.AccountRepository;
 import com.bage.javaconfig.Composing.SystemTestConfig;
@@ -18,6 +25,7 @@ import com.bage.javaconfig.Composing.TransferService;
 import com.bage.javaconfig.basic.AppConfig;
 import com.bage.javaconfig.basic.Foo;
 import com.bage.javaconfig.basic.MyService;
+import com.bage.javaconfig.beanFactory.MyBeanPostProcessor;
 import com.bage.javaconfig.configuration.AsyncCommand;
 import com.bage.javaconfig.configuration.CommandManager;
 import com.bage.javaconfig.profile.JndiDataConfig;
@@ -187,10 +195,29 @@ public class Main {
 	        // 启动服务：访问--com.bage.javaconfig.applicationcontext.HelloController 
 	        // context-param 只能有一个？？
 	        
-	        // 1.16. The BeanFactory  ## 尚未开始
-
-
-	       
+	        // 1.16. The BeanFactory  
+	        
+	        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+	        // populate the factory with bean definitions
+	        // now register any needed BeanPostProcessor instances
+	        MyBeanPostProcessor postProcessor = new MyBeanPostProcessor();
+	        factory.addBeanPostProcessor(postProcessor);
+	        // now start using the factory
+	        System.out.println(factory);
+	        
+	        // 基本使用beanFactory
+	        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+	        // reader.loadBeanDefinitions(new FileSystemResource("src.xml"));
+	        reader.loadBeanDefinitions(new ClassPathResource("src.xml"));
+	        // bring in some property values from a Properties file
+	        PropertyPlaceholderConfigurer cfg = new PropertyPlaceholderConfigurer();
+	        cfg.setLocation(new ClassPathResource("jdbc.properties"));
+	        // now actually do the replacement
+	        cfg.postProcessBeanFactory(factory);
+	        System.out.println(factory.getBean("template"));
+	        
+	        
+	        
 	}
 
 }
