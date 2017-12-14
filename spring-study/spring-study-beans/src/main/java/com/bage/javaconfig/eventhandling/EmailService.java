@@ -11,7 +11,9 @@ public class EmailService implements ApplicationEventPublisherAware{
 		this.applicationEventPublisher = applicationEventPublisher;
 	}
 
-	
-	
+	public ApplicationEventPublisher getApplicationEventPublisher() {
+		return applicationEventPublisher;
+	}
+
 	
 }
