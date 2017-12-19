@@ -112,5 +112,6 @@
 		<module>spring-study-webmvc</module>
 		<module>spring-study-beans</module>
     <module>spring-study-comprehensive</module>
+    <module>spring-study-resources</module>
   </modules>
 </project>
