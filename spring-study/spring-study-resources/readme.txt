@@ -26,6 +26,9 @@ getDescription(): returns a description for this resource, to be used for error 
 
 2.3. Built-in Resource implementations
 
+2.4. The ResourceLoader
+
+2.5. The ResourceLoaderAware interface
 
 
 
