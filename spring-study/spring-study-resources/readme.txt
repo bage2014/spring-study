@@ -29,7 +29,11 @@ getDescription(): returns a description for this resource, to be used for error 
 2.4. The ResourceLoader
 
 2.5. The ResourceLoaderAware interface
+## 不够理解
 
+2.6. Resources as dependencies
+
+2.7. Application contexts and Resource paths
 
 
 
