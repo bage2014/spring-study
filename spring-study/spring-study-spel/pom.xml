@@ -7,9 +7,9 @@
     <artifactId>spring-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>spring-study-resources</artifactId>
+  <artifactId>spring-study-spel</artifactId>
   <packaging>war</packaging>
-  <name>spring-study-resources Maven Webapp</name>
+  <name>spring-study-spel Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -20,6 +20,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>spring-study-resources</finalName>
+    <finalName>spring-study-spel</finalName>
   </build>
 </project>

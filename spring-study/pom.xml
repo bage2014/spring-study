@@ -99,13 +99,21 @@
 		    <scope>test</scope>
 		</dependency>
 
-<dependency>
-    <groupId>hsqldb</groupId>
-    <artifactId>hsqldb</artifactId>
-    <version>1.8.0.7</version>
-    <scope>test</scope>
-</dependency>
+		<dependency>
+		    <groupId>hsqldb</groupId>
+		    <artifactId>hsqldb</artifactId>
+		    <version>1.8.0.7</version>
+		    <scope>test</scope>
+		</dependency>
 
+		<!-- SpEL start -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-expression</artifactId>
+		    <version>${spring.base.version}</version>
+		</dependency>
+		<!-- SpEL end -->
+		
 	</dependencies>
 
 	<modules>
@@ -113,5 +121,7 @@
 		<module>spring-study-beans</module>
     <module>spring-study-comprehensive</module>
     <module>spring-study-resources</module>
+    <module>spring-study-validation</module>
+    <module>spring-study-spel</module>
   </modules>
 </project>

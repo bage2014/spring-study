@@ -12,8 +12,11 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 
 public class Main {
-
+	
+	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws MalformedURLException {
+		
 		Resource urlResource = new UrlResource("");
 		Resource classPathResource = new ClassPathResource("");
 		Resource fileSystemResource = new FileSystemResource("");
@@ -23,6 +26,7 @@ public class Main {
 		
 		// 2.4. The ResourceLoader
 		ResourceLoader resourceLoader;
+		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext();
 		
 		Resource template = ctx.getResource("classpath:some/resource/path/myTemplate.txt");
