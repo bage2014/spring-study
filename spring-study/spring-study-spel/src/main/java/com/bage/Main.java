@@ -3,6 +3,8 @@ package com.bage;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
@@ -10,6 +12,7 @@ import org.springframework.expression.spel.SpelParserConfiguration;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
+import com.bage.compilation.MyMessage;
 import com.bage.evaluationcontext.Simple;
 import com.bage.parserconfiguration.Demo;
 
@@ -74,10 +77,21 @@ public class Main {
 		parser = new SpelExpressionParser(config);
 		Expression expression = parser.parseExpression("list[3]");
 		Demo demo = new Demo();
-		Integer size = parser.parseExpression("list.size()").getValue(demo,Integer.class); // evaluates to true
+		Object o = expression.getValue(demo);
 		// demo.list will now be a real collection of 4 entries
 		// Each entry is a new empty String
-		System.out.println(expression.getValue(demo) + ";" + size);
+		System.out.println("list[3]:" + o);
+		System.out.println("demo.list:" + demo.list.size());
+		
+		// SpEL compilation
+		System.out.println("" + new MyMessage().work());
+		
+		// 4.4.1. XML based configuration
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:com/bage/xml/based.xml");
+		System.out.println(ctx.getBean(com.bage.xml.NumberGuess.class));
+		
+		System.out.println(ctx.getBean("taxCalculator"));
+
 		
 		
 	}

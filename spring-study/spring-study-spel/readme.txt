@@ -1,5 +1,6 @@
 
-4. Spring Expression Language (SpEL)
+4. Spring Expression Language
+	(SpEL)
  
  4.1. Introduction
  
@@ -32,4 +33,10 @@
 4.3.2. Parser configuration
 
 4.3.3. SpEL compilation
-## TODO 2017-12-24 20:15
+## 2017-12-24 20:15
+
+4.4. Expression support for defining bean definitions
+4.4.1. XML based configuration
+## 2017-12-25 22:05
+
+
