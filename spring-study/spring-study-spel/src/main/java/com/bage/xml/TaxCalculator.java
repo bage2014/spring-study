@@ -1,16 +1,14 @@
 package com.bage.xml;
 
-import java.util.Locale;
-
 public class TaxCalculator {
 
-	private Locale defaultLocale;
+	private String defaultLocale;
 
-	public Locale getDefaultLocale() {
+	public String getDefaultLocale() {
 		return defaultLocale;
 	}
 
-	public void setDefaultLocale(Locale defaultLocale) {
+	public void setDefaultLocale(String defaultLocale) {
 		this.defaultLocale = defaultLocale;
 	}
 

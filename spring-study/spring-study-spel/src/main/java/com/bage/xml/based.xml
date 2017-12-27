@@ -20,5 +20,11 @@
 		    <property name="defaultLocale" value="#{ systemProperties['user.region'] }"/>
 		    <!-- other properties -->
 		</bean>
+		
+		<bean id="shapeGuess" class="com.bage.xml.ShapeGuess">
+        <property name="initialShapeSeed" value="#{ numberGuess.randomNumber }"/>
+
+        <!-- other properties -->
+</bean>
 
 </beans>

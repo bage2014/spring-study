@@ -1,4 +1,7 @@
 
+
+https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/core.html#spring-core
+
 4. Spring Expression Language
 	(SpEL)
  
@@ -39,4 +42,7 @@
 4.4.1. XML based configuration
 ## 2017-12-25 22:05
 
+4.5. Language Reference
+4.5.1. Literal expressions
+## 2017-12-27 22:32
 

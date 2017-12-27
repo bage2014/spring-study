@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
@@ -12,12 +13,17 @@ import org.springframework.expression.spel.SpelParserConfiguration;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
+import com.bage.annotation.AppConfig;
+import com.bage.annotation.FieldValueTestBean;
+import com.bage.annotation.FieldValueTestBeanConstructor;
 import com.bage.compilation.MyMessage;
 import com.bage.evaluationcontext.Simple;
 import com.bage.parserconfiguration.Demo;
+import com.bage.xml.ShapeGuess;
 
 public class Main {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		// hello world
 		ExpressionParser parser = new SpelExpressionParser();
@@ -90,8 +96,18 @@ public class Main {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:com/bage/xml/based.xml");
 		System.out.println(ctx.getBean(com.bage.xml.NumberGuess.class));
 		
+		// 存在问题 #{ systemProperties['user.region'] }
 		System.out.println(ctx.getBean("taxCalculator"));
 
+		// refer to other bean properties by name
+		System.out.println(ctx.getBean(ShapeGuess.class));
+		
+		// @Value annotation can be placed on fields, methods and method/constructor parameters to specify a default value
+		ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+		System.out.println(ctx.getBean(FieldValueTestBean.class));
+		System.out.println(ctx.getBean(FieldValueTestBeanConstructor.class)); // 构造器需要 @Autowired
+				
+		
 		
 		
 	}
