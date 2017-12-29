@@ -107,6 +107,27 @@ public class Main {
 		System.out.println(ctx.getBean(FieldValueTestBean.class));
 		System.out.println(ctx.getBean(FieldValueTestBeanConstructor.class)); // 构造器需要 @Autowired
 				
+		// Literal expressions
+		parser = new SpelExpressionParser();
+		// evals to "Hello World"
+		String helloWorld = (String) parser.parseExpression("'Hello World'").getValue();
+		System.out.println(helloWorld);
+		double avogadrosNumber = (Double) parser.parseExpression("6.0221415E+23").getValue();
+		System.out.println(avogadrosNumber);
+		// evals to 2147483647
+		int maxValue = (Integer) parser.parseExpression("0x7FFFFFFF").getValue();
+		System.out.println(maxValue);
+		boolean trueValue = (Boolean) parser.parseExpression("true").getValue();
+		System.out.println(trueValue);
+		Object nullValue = parser.parseExpression("null").getValue();
+		System.out.println(nullValue);
+		
+		// 4.5.2. Properties, Arrays, Lists, Maps, Indexers
+		// evals to 1856
+		// 因为目前不存在此属性 int year = (Integer) parser.parseExpression("year + 1900").getValue(context);
+		String nationality = (String) parser.parseExpression("nationality").getValue(context);
+		//String city = (String) parser.parseExpression("placeOfBirth.nationality").getValue(context);
+		System.out.println(nationality);
 		
 		
 		
