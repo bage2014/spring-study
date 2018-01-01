@@ -1,7 +1,12 @@
 package com.bage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -129,8 +134,235 @@ public class Main {
 		//String city = (String) parser.parseExpression("placeOfBirth.nationality").getValue(context);
 		System.out.println(nationality);
 		
+		TestBean testBean = new TestBean();
+		// Inventions Array
+		StandardEvaluationContext teslaContext = new StandardEvaluationContext(testBean);
+		// evaluates to "Induction motor"
+		String invention = parser.parseExpression("inventions[3]").getValue(
+		                teslaContext, String.class);
+		System.out.println(invention);
+		// Members List
+		StandardEvaluationContext societyContext = new StandardEvaluationContext(testBean);
+		// evaluates to "Nikola Tesla"
+		name = parser.parseExpression("Members.get(0).Name").getValue(societyContext, String.class);
+		// 也可以这样获取 name = parser.parseExpression("Members[0].Name").getValue(societyContext, String.class);
+		System.out.println(name);
+		// List and Array navigation
+		// evaluates to "Wireless communication"
+		invention = parser.parseExpression("Members[0].Inventions[6]").getValue(
+		                societyContext, String.class);
+		System.out.println(invention);
+		// Officers's InnerBean
+		InnerBean pupin = parser.parseExpression("Officers['president']").getValue(
+		                societyContext, InnerBean.class);
+		System.out.println(pupin);
+		// evaluates to "Idvor"
+		String Name = parser.parseExpression("Officers['president'].Name").getValue(
+		                societyContext, String.class);
+		System.out.println(Name);
+		// setting values
+		parser.parseExpression("Officers['president'].Name").setValue(
+		                societyContext, "123456");
+		Name = parser.parseExpression("Officers['president'].Name").getValue(
+                societyContext, String.class);
+		System.out.println(Name);
+
+		// 4.5.3. Inline lists
+		// evaluates to a Java list containing the four numbers
+		List numbers = (List) parser.parseExpression("{1,2,3,4}").getValue(context);
+		List<List> listOfLists = (List<List>) parser.parseExpression("{{'a','b'},{'x','y'}}").getValue(context);
+		System.out.println(numbers.get(2));
+		System.out.println(listOfLists.get(0).get(1));
+
+		// 4.5.4. Inline Maps
+		// evaluates to a Java map containing the two entries
+		Map inventorInfo = (Map) parser.parseExpression("{name:'Nikola',dob:'10-July-1856'}").getValue(context);
+		Map<String,Map> mapOfMaps = (Map<String,Map>) parser.parseExpression("{name:{first:'Nikola',last:'Tesla'},dob:{day:10,month:'July',year:1856}}").getValue(context);
+		System.out.println(inventorInfo.get("name"));
+		System.out.println(mapOfMaps.get("name").get("last"));
+
+		// Array construction
+		int[] numbers1 = (int[]) parser.parseExpression("new int[4]").getValue(context);
+		// Array with initializer
+		int[] numbers2 = (int[]) parser.parseExpression("new int[]{1,2,3}").getValue(context);
+		// Multi dimensional array
+		int[][] numbers3 = (int[][]) parser.parseExpression("new int[4][5]").getValue(context);
+		System.out.println(numbers1.length + "," + numbers2[1] + "," + numbers3[3][4]);
+		
+		// 4.5.6. Methods
+		// string literal, evaluates to "bc"
+		String cc = parser.parseExpression("'abc'.substring(2, 3)").getValue(String.class);
+		// evaluates to true
+		String callMethods = parser.parseExpression("callMethods('Mihajlo Pupin')").getValue(
+		                societyContext, String.class);
+		System.out.println(cc + ",," + callMethods);
+		
+		// 4.5.7. Operators
+		// evaluates to true
+		trueValue = parser.parseExpression("2 == 2").getValue(Boolean.class);
+		System.out.println(trueValue);
+		// evaluates to false
+		boolean falseValue = parser.parseExpression("2 < -5.0").getValue(Boolean.class);
+		// evaluates to true
+		trueValue = parser.parseExpression("'black' < 'block'").getValue(Boolean.class);
+		System.out.println(falseValue + ",," + trueValue);
+		
+		// addition 
+//		// evaluates to false
+		falseValue = parser.parseExpression(
+		                " 12 instanceof T(Integer)").getValue(Boolean.class);
+		System.out.println(falseValue);
+//		// evaluates to true
+//		boolean trueValue = parser.parseExpression("'5.00' matches '\^-?\\d+(\\.\\d{2})?$' ").getValue(Boolean.class);
+//		//evaluates to false
+//		boolean falseValue = parser.parseExpression(
+//		                "'5.0067' matches '\^-?\\d+(\\.\\d{2})?$'").getValue(Boolean.class);
+//		System.out.println(falseValue + ",," + trueValue);
+		// TODO 带有正则表达式的未完成
+		
+		// Logical operators
+		// lt (<), gt (>), le (⇐), ge (>=), eq (==), ne (!=), div (/), mod (%), not (!). 
+		// -- AND --
+		// evaluates to false
+		falseValue = parser.parseExpression("true and false").getValue(Boolean.class);
+		System.out.println(falseValue);
+		// -- OR --
+		// evaluates to true
+		trueValue = parser.parseExpression("true or false").getValue(Boolean.class);
+		// -- NOT --
+		// evaluates to false
+		falseValue = parser.parseExpression("!true").getValue(Boolean.class);
+		System.out.println(trueValue + ",," + falseValue);
+		
+		// Mathematical operators
+		// Addition
+		int two = parser.parseExpression("1 + 1").getValue(Integer.class); // 2
+		String testString = parser.parseExpression(
+		                "'test' + ' ' + 'string'").getValue(String.class); // 'test string'
+		// Subtraction
+		int four = parser.parseExpression("1 - -3").getValue(Integer.class); // 4
+		double d = parser.parseExpression("1000.00 - 1e4").getValue(Double.class); // -9000
+		// Multiplication
+		int six = parser.parseExpression("-2 * -3").getValue(Integer.class); // 6
+		double twentyFour = parser.parseExpression("2.0 * 3e0 * 4").getValue(Double.class); // 24.0
+		// Division
+		int minusTwo = parser.parseExpression("6 / -3").getValue(Integer.class); // -2
+		double one = parser.parseExpression("8.0 / 4e0 / 2").getValue(Double.class); // 1.0
+		// Modulus
+		int three = parser.parseExpression("7 % 4").getValue(Integer.class); // 3
+		one = parser.parseExpression("8 / 5 % 2").getValue(Integer.class); // 1
+		// Operator precedence
+		int minusTwentyOne = parser.parseExpression("1+2-3*8").getValue(Integer.class); // -21
+		System.out.println(two + ","  + testString + "," + four + "," + d  + "," + six + "," + twentyFour
+				+ "," + minusTwo + "," + one + "," + three + "," + minusTwentyOne
+				);
+		
+		// 4.5.8. Assignment
+		Inventor inventor = new Inventor();
+		StandardEvaluationContext inventorContext = new StandardEvaluationContext(inventor);
+		parser.parseExpression("name").setValue(inventorContext, "Alexander Seovic2");
+		// alternatively
+		String aleks = parser.parseExpression(
+		                "name = 'Alexandar Seovic'").getValue(inventorContext, String.class);
+		System.out.println("aleks:" + aleks);
+		
+		// 4.5.9. Types
+		Class dateClass = parser.parseExpression("T(java.util.Date)").getValue(Class.class);
+		Class stringClass = parser.parseExpression("T(String)").getValue(Class.class);
+		trueValue = parser.parseExpression(
+		                "T(java.math.RoundingMode).CEILING < T(java.math.RoundingMode).FLOOR")
+		                .getValue(Boolean.class);
+		System.out.println(dateClass + ","  + stringClass + "," + trueValue);
+		
+		// 4.5.10. Constructors
+		Inventor einstein = parser.parseExpression(
+                "new com.bage.Inventor('Albert Einstein', new java.util.Date(), 'German')")
+                .getValue(Inventor.class);
+		//create new inventor instance within add method of List
+//		Object obj = parser.parseExpression(
+//                "Members.add(new com.bage.InnerBean())").getValue(societyContext);
+//		System.out.println(einstein + "," + obj);
+		// TODO create new inventor instance within add method of List
+		
+		// 4.5.11. Variables 变量
+		tesla = new Inventor("Nikola Tesla",new Date(), "Serbian");
+		context = new StandardEvaluationContext(tesla);
+		context.setVariable("newName", "Mike Tesla");
+		parser.parseExpression("Name = #newName").getValue(context);
+		System.out.println(tesla.getName()); // "Mike Tesla"
+		
+		// The #this and #root variables
+		// create an array of integers
+		List<Integer> primes = new ArrayList<Integer>();
+		primes.addAll(Arrays.asList(2,3,5,7,11,13,17));
+		// create parser and set variable 'primes' as the array of integers
+		context = new StandardEvaluationContext();
+		context.setVariable("primes",primes);
+		// all prime numbers > 10 from the list (using selection ?{...})
+		// evaluates to [11, 13, 17]
+		List<Integer> primesGreaterThanTen = (List<Integer>) parser.parseExpression(
+		                "#primes.?[#this>10]").getValue(context);
+		System.out.println(primesGreaterThanTen);
+		// TODO #root
 		
 		
+	}
+	
+}
+
+class TestBean{
+	String []inventions = {"0","1","2","3"};
+	List<InnerBean> Members = Arrays.asList(new InnerBean());
+	Map<String,InnerBean> Officers = new HashMap<String,InnerBean>();
+	public TestBean(){
+		Officers.put("president",new InnerBean());
+	}
+	
+	public Map<String, InnerBean> getOfficers() {
+		return Officers;
+	}
+	public void setOfficers(Map<String, InnerBean> officers) {
+		Officers = officers;
+	}
+	public String[] getInventions() {
+		return inventions;
+	}
+	public void setInventions(String[] inventions) {
+		this.inventions = inventions;
+	}
+	public List<InnerBean> getMembers() {
+		return Members;
+	}
+	public void setMembers(List<InnerBean> members) {
+		Members = members;
+	}
+	public String callMethods(String input){
+		return "callMethodsReturn:" + input;
+	}
+}
+
+class InnerBean {
+	String Name = "123";
+	String []Inventions = {"0","1","2","3","2","3","3"};
+	
+	public InnerBean(){
+		
+	}
+	
+	public String[] getInventions() {
+		return Inventions;
+	}
+
+	public void setInventions(String[] inventions) {
+		Inventions = inventions;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
 	}
 	
 }

@@ -46,3 +46,32 @@ https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/core.htm
 4.5.1. Literal expressions
 ## 2017-12-27 22:32
 
+4.5.2. Properties, Arrays, Lists, Maps, Indexers
+
+4.5.3. Inline lists
+
+4.5.4. Inline Maps
+
+4.5.5. Array construction
+
+4.5.6. Methods
+
+4.5.7. Operators
+Logical operators、Mathematical operators
+
+4.5.8. Assignment
+
+4.5.9. Types
+
+4.5.10. Constructors
+
+4.5.11. Variables
+## 2018-01-01 22:26
+
+
+
+
+
+
+
+
