@@ -68,6 +68,12 @@ Logical operators、Mathematical operators
 4.5.11. Variables
 ## 2018-01-01 22:26
 
+4.5.12. Functions
+
+4.5.13. Bean references
+
+4.5.14. Ternary Operator (If-Then-Else)
+## 2018-01-02 22:5
 
 
 

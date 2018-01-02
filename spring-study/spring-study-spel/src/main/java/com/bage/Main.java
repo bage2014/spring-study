@@ -29,7 +29,7 @@ import com.bage.xml.ShapeGuess;
 public class Main {
 
 	@SuppressWarnings("resource")
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// hello world
 		ExpressionParser parser = new SpelExpressionParser();
 		Expression exp = parser.parseExpression("'Hello World'");
@@ -305,64 +305,24 @@ public class Main {
 		System.out.println(primesGreaterThanTen);
 		// TODO #root
 		
+		// 4.5.12. Functions
+		// StandardEvaluationContext.registerFunction(String name, Method m)
+		StandardEvaluationContext  contexts = new StandardEvaluationContext();
+		contexts.registerFunction("reverseString",StringUtils.class.getDeclaredMethod("reverseString", new Class[] { String.class }));
+		String helloWorldReversed = parser.parseExpression(
+		        "#reverseString('hello')").getValue(contexts, String.class);
+		System.out.println("helloWorldReversed:" + helloWorldReversed);
+		// 4.5.13. Bean references		
+		contexts.setBeanResolver(new MyBeanResolver());
+		// This will end up calling resolve(context,"foo") on MyBeanResolver during evaluation
+		Object bean = parser.parseExpression("@foo").getValue(contexts);
+		System.out.println(bean);
+		//bean = parser.parseExpression("&foo").getValue(context);// should instead be prefixed with a (&) symbol.
+
+		
+		
 		
 	}
 	
 }
 
-class TestBean{
-	String []inventions = {"0","1","2","3"};
-	List<InnerBean> Members = Arrays.asList(new InnerBean());
-	Map<String,InnerBean> Officers = new HashMap<String,InnerBean>();
-	public TestBean(){
-		Officers.put("president",new InnerBean());
-	}
-	
-	public Map<String, InnerBean> getOfficers() {
-		return Officers;
-	}
-	public void setOfficers(Map<String, InnerBean> officers) {
-		Officers = officers;
-	}
-	public String[] getInventions() {
-		return inventions;
-	}
-	public void setInventions(String[] inventions) {
-		this.inventions = inventions;
-	}
-	public List<InnerBean> getMembers() {
-		return Members;
-	}
-	public void setMembers(List<InnerBean> members) {
-		Members = members;
-	}
-	public String callMethods(String input){
-		return "callMethodsReturn:" + input;
-	}
-}
-
-class InnerBean {
-	String Name = "123";
-	String []Inventions = {"0","1","2","3","2","3","3"};
-	
-	public InnerBean(){
-		
-	}
-	
-	public String[] getInventions() {
-		return Inventions;
-	}
-
-	public void setInventions(String[] inventions) {
-		Inventions = inventions;
-	}
-
-	public String getName() {
-		return Name;
-	}
-
-	public void setName(String name) {
-		Name = name;
-	}
-	
-}
