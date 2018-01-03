@@ -9,6 +9,25 @@ public class TestBean{
 	String []inventions = {"0","1","2","3"};
 	List<InnerBean> Members = Arrays.asList(new InnerBean());
 	Map<String,InnerBean> Officers = new HashMap<String,InnerBean>();
+	String Name = "123";
+	Map map;
+
+	public Map getMap() {
+		return map;
+	}
+
+	public void setMap(Map map) {
+		this.map = map;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
 	public TestBean(){
 		Officers.put("president",new InnerBean());
 	}
@@ -34,6 +53,11 @@ public class TestBean{
 	public String callMethods(String input){
 		return "callMethodsReturn:" + input;
 	}
+	
+	public boolean isMember(String input){
+		return true;
+	}
+	
 }
 
 class InnerBean {

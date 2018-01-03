@@ -7,6 +7,7 @@ public class Inventor {
 	private String name;
 	private Date birthday;
 	private String nationality;
+	private PlaceOfBirth placeOfBirth;
 	
 	public Inventor() {
 		super();
@@ -19,6 +20,15 @@ public class Inventor {
 		this.nationality = nationality;
 	}
 	
+	
+	public PlaceOfBirth getPlaceOfBirth() {
+		return placeOfBirth;
+	}
+
+	public void setPlaceOfBirth(PlaceOfBirth placeOfBirth) {
+		this.placeOfBirth = placeOfBirth;
+	}
+
 	public String getName() {
 		return name;
 	}

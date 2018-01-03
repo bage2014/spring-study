@@ -76,6 +76,12 @@ Logical operators、Mathematical operators
 ## 2018-01-02 22:5
 
 
+4.5.15. The Elvis Operator
+
+4.5.16. Safe Navigation operator
+
+4.5.17. Collection Selection
+## 2018-01-03 22:12
 
 
 

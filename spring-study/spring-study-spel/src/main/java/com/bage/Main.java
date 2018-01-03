@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,7 +27,7 @@ import com.bage.xml.ShapeGuess;
 
 public class Main {
 
-	@SuppressWarnings("resource")
+	@SuppressWarnings({ "resource", "unchecked" })
 	public static void main(String[] args) throws Exception {
 		// hello world
 		ExpressionParser parser = new SpelExpressionParser();
@@ -319,6 +318,43 @@ public class Main {
 		System.out.println(bean);
 		//bean = parser.parseExpression("&foo").getValue(context);// should instead be prefixed with a (&) symbol.
 
+		// 4.5.14. Ternary Operator (If-Then-Else)
+		// String falseString = parser.parseExpression("false ? 'trueExp' : 'falseExp'").getValue(String.class);
+		parser.parseExpression("Name").setValue(societyContext, "IEEE");
+		societyContext.setVariable("queryName", "Nikola Tesla");
+		String expressionStr = "isMember(#queryName)? #queryName + ' is a member of the ' " +
+		                "+ Name + ' Society' : #queryName + ' is not a member of the ' + Name + ' Society'";
+		String queryResultString = parser.parseExpression(expressionStr)
+		                .getValue(societyContext, String.class);
+		// queryResultString = "Nikola Tesla is a member of the IEEE Society"
+		System.out.println(queryResultString);
+		
+		// 4.5.15. The Elvis Operator
+		context = new StandardEvaluationContext(tesla);
+		name = parser.parseExpression("name?:'Elvis Presley'").getValue(context, String.class);
+		System.out.println(name); // Nikola Tesla
+		tesla.setName(null);
+		name = parser.parseExpression("name?:'Elvis Presley'").getValue(context, String.class);
+		System.out.println(name); // Elvis Presley
+		
+		// 4.5.16. Safe Navigation operator
+		// 同样可以使用在 @Value("#{systemProperties['pop3.port'] ?: 25}") 中
+		tesla.setPlaceOfBirth(new PlaceOfBirth("Smiljan"));
+		context = new StandardEvaluationContext(tesla);
+		String city = parser.parseExpression("PlaceOfBirth?.City").getValue(context, String.class);
+		System.out.println(city); // Smiljan
+		tesla.setPlaceOfBirth(null);
+		PlaceOfBirth placeOfBirth = parser.parseExpression("PlaceOfBirth").getValue(context, PlaceOfBirth.class);
+		System.out.println(placeOfBirth);
+		city = parser.parseExpression("PlaceOfBirth?.City").getValue(context, String.class);
+		System.out.println(city); // null - does not throw NullPointerException!!!
+		
+		// 4.5.17. Collection Selection
+		List<Inventor> list = (List<Inventor>) parser.parseExpression(
+                "Members.?[Name == '123']").getValue(societyContext);
+		System.out.println(list);
+		//Map newMap = (Map) parser.parseExpression("map.?[value<27]").getValue();
+		//System.out.println(newMap);
 		
 		
 		
