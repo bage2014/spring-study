@@ -13,6 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.SpelParserConfiguration;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
@@ -353,9 +354,20 @@ public class Main {
 		List<Inventor> list = (List<Inventor>) parser.parseExpression(
                 "Members.?[Name == '123']").getValue(societyContext);
 		System.out.println(list);
-		//Map newMap = (Map) parser.parseExpression("map.?[value<27]").getValue();
-		//System.out.println(newMap);
+		Map<String,Integer> newMap = (Map<String,Integer>) parser.parseExpression("map.?[value<27]").getValue(societyContext);
+		System.out.println(newMap);
 		
+		// 4.5.18. Collection Projection
+		// returns ['Smiljan', 'Idvor' ]
+		// List<Inventor> placesOfBirth = (List<Inventor>)parser.parseExpression("Members.![placeOfBirth.city]").getValue(societyContext);;
+		// System.out.println(placesOfBirth);
+		// TODO
+		
+		// 4.5.19. Expression templating
+		String randomPhrase = parser.parseExpression("random number is #{T(java.lang.Math).random()}",
+          new TemplateParserContext()).getValue(String.class);
+		System.out.println(randomPhrase);
+		// evaluates to "random number is 0.7038186818312008"
 		
 		
 	}

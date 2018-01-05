@@ -10,13 +10,13 @@ public class TestBean{
 	List<InnerBean> Members = Arrays.asList(new InnerBean());
 	Map<String,InnerBean> Officers = new HashMap<String,InnerBean>();
 	String Name = "123";
-	Map map;
-
-	public Map getMap() {
+	Map<String,Integer> map = new HashMap<String, Integer>();
+	
+	public Map<String,Integer> getMap() {
 		return map;
 	}
 
-	public void setMap(Map map) {
+	public void setMap(Map<String,Integer> map) {
 		this.map = map;
 	}
 
@@ -30,6 +30,9 @@ public class TestBean{
 
 	public TestBean(){
 		Officers.put("president",new InnerBean());
+		map.put("a", 1);
+		map.put("ab", 11);
+		map.put("abc", 111);
 	}
 	
 	public Map<String, InnerBean> getOfficers() {
