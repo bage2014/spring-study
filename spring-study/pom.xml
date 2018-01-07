@@ -123,5 +123,6 @@
     <module>spring-study-resources</module>
     <module>spring-study-validation</module>
     <module>spring-study-spel</module>
+    <module>spring-aop</module>
   </modules>
 </project>
