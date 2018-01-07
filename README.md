@@ -11,4 +11,7 @@ spring学习项目
 
 
 系统学习spring的基本知识点；
-现在正在学习spring-beans 中
+包含：spring-beans,spring-resources,spring-SpEL 
+
+
+目前开始学习spring-aop
