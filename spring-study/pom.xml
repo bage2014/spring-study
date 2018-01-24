@@ -119,10 +119,10 @@
 	<modules>
 		<module>spring-study-webmvc</module>
 		<module>spring-study-beans</module>
-    <module>spring-study-comprehensive</module>
-    <module>spring-study-resources</module>
-    <module>spring-study-validation</module>
-    <module>spring-study-spel</module>
-    <module>spring-aop</module>
-  </modules>
+	    <module>spring-study-comprehensive</module>
+	    <module>spring-study-resources</module>
+	    <module>spring-study-validation</module>
+	    <module>spring-study-spel</module>
+	    <module>spring-study-aop</module>
+	  </modules>
 </project>

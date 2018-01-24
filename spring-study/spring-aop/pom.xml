@@ -20,6 +20,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>spring-aop</finalName>
+    <finalName>spring-study-aop</finalName>
   </build>
 </project>
