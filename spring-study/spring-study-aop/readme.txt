@@ -39,6 +39,24 @@ Around advice: Advice that surrounds a join point such as a method invocation. T
 
 Spring AOP currently supports only method execution join points (advising the execution of methods on Spring beans). Field interception is not implemented, although support for field interception could be added without breaking the core Spring AOP APIs. If you need to advise field access and update join points, consider a language such as AspectJ.
 
+5.1.3. AOP Proxies
+
+
+5.2. @AspectJ support
+
+5.2.1. Enabling @AspectJ Support
+
+5.2.2. Declaring an aspect
+
+5.2.3. Declaring a pointcut
+//  your classpath must include the AspectJ run-time Java archive
+// 参考链接：https://www.eclipse.org/aspectj/doc/released/progguide/examples-howto.html
+
+
+
+
+
+
 
 
 
