@@ -52,12 +52,88 @@ Spring AOP currently supports only method execution join points (advising the ex
 //  your classpath must include the AspectJ run-time Java archive
 // 参考链接：https://www.eclipse.org/aspectj/doc/released/progguide/examples-howto.html
 
+The full AspectJ pointcut language supports additional pointcut designators that are not supported in Spring. These are: call, get, set, preinitialization, staticinitialization, initialization, handler, adviceexecution, withincode, cflow, cflowbelow, if, @this, and @withincode. 
+Use of these pointcut designators in pointcut expressions interpreted by Spring AOP will result in an IllegalArgumentException being thrown：
+
+execution - for matching method execution join points, this is the primary pointcut designator you will use when working with Spring AOP
+
+within - limits matching to join points within certain types (simply the execution of a method declared within a matching type when using Spring AOP)
+
+this - limits matching to join points (the execution of methods when using Spring AOP) where the bean reference (Spring AOP proxy) is an instance of the given type
+
+target - limits matching to join points (the execution of methods when using Spring AOP) where the target object (application object being proxied) is an instance of the given type
+
+args - limits matching to join points (the execution of methods when using Spring AOP) where the arguments are instances of the given types
+
+@target - limits matching to join points (the execution of methods when using Spring AOP) where the class of the executing object has an annotation of the given type
+
+@args - limits matching to join points (the execution of methods when using Spring AOP) where the runtime type of the actual arguments passed have annotations of the given type(s)
+
+@within - limits matching to join points within types that have the given annotation (the execution of methods declared in types with the given annotation when using Spring AOP)
+
+@annotation - limits matching to join points where the subject of the join point (method being executed in Spring AOP) has the given annotation
+
+Some examples of common pointcut expressions are given below.
+
+the execution of any public method:
+
+execution(public * *(..))
+the execution of any method with a name beginning with "set":
+
+execution(* set*(..))
+the execution of any method defined by the AccountService interface:
+
+execution(* com.xyz.service.AccountService.*(..))
+the execution of any method defined in the service package:
+
+execution(* com.xyz.service.*.*(..))
+the execution of any method defined in the service package or a sub-package:
+
+execution(* com.xyz.service..*.*(..))
+any join point (method execution only in Spring AOP) within the service package:
+
+within(com.xyz.service.*)
+any join point (method execution only in Spring AOP) within the service package or a sub-package:
+
+within(com.xyz.service..*)
+any join point (method execution only in Spring AOP) where the proxy implements the AccountService interface:
+
+this(com.xyz.service.AccountService)
+
+any join point (method execution only in Spring AOP) where the target object implements the AccountService interface:
+
+target(com.xyz.service.AccountService)
+
+any join point (method execution only in Spring AOP) which takes a single parameter, and where the argument passed at runtime is Serializable:
+
+args(java.io.Serializable)
+
+any join point (method execution only in Spring AOP) where the target object has an @Transactional annotation:
+
+@target(org.springframework.transaction.annotation.Transactional)
+
+any join point (method execution only in Spring AOP) where the declared type of the target object has an @Transactional annotation:
+
+@within(org.springframework.transaction.annotation.Transactional)
+
+any join point (method execution only in Spring AOP) where the executing method has an @Transactional annotation:
+
+@annotation(org.springframework.transaction.annotation.Transactional)
+
+any join point (method execution only in Spring AOP) which takes a single parameter, and where the runtime type of the argument passed has the @Classified annotation:
+
+@args(com.xyz.security.Classified)
+
+any join point (method execution only in Spring AOP) on a Spring bean named tradeService:
+
+bean(tradeService)
+
+any join point (method execution only in Spring AOP) on Spring beans having names that match the wildcard expression *Service:
+
+bean(*Service)
 
 
-
-
-
-
+5.2.4. Declaring advice
 
 
 

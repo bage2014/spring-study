@@ -13,17 +13,16 @@ public class Main {
 		// 或者：To enable @AspectJ support with XML based configuration use the aop:aspectj-autoproxy element： <aop:aspectj-autoproxy/>
 		
 		// 5.2.3. Declaring a pointcut
-		//  your classpath must include the AspectJ run-time Java archive
-		
+		// your classpath must include the AspectJ run-time Java archive
+		// 参考: com.bage.NotVeryUsefulAspect
 		
 		// test 
 		@SuppressWarnings("resource")
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(AppConfig.class);
 		context.refresh();
-		SystemArchitecture systemArchitecture = context.getBean("systemArchitecture",SystemArchitecture.class);
-		systemArchitecture.dataAccessOperation();
-
+		
+		// 5.2.4. Declaring advice
 	}
 	
 }

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ComponentScan(basePackageClasses=DemoBean.class)
+@ComponentScan(basePackageClasses=BasePackageClass.class)
 @EnableAspectJAutoProxy
 @ImportResource("com/bage/template.xml")
 public class AppConfig {

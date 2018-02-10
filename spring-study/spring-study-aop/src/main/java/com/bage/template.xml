@@ -6,7 +6,7 @@
                 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
 
 
-	<bean id="myAspect" class="com.bage.NotVeryUsefulAspect">
+	<bean id="myAspect" class="com.bage.aspect.NotVeryUsefulAspect">
         <!-- configure properties of aspect here as normal -->
 	</bean>
 
