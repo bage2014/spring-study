@@ -28,7 +28,7 @@ import com.bage.xml.ShapeGuess;
 
 public class Main {
 
-	@SuppressWarnings({ "resource", "unchecked" })
+	@SuppressWarnings({ "resource", "unchecked", "rawtypes" })
 	public static void main(String[] args) throws Exception {
 		// hello world
 		ExpressionParser parser = new SpelExpressionParser();
@@ -278,6 +278,7 @@ public class Main {
 		Inventor einstein = parser.parseExpression(
                 "new com.bage.Inventor('Albert Einstein', new java.util.Date(), 'German')")
                 .getValue(Inventor.class);
+		System.out.println("einstein:" + einstein);
 		//create new inventor instance within add method of List
 //		Object obj = parser.parseExpression(
 //                "Members.add(new com.bage.InnerBean())").getValue(societyContext);
