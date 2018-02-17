@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class Example {
@@ -58,7 +59,7 @@ public class Example {
             // ...
     }
 	
-	
+	// please note that around advice is required to declare a first parameter of type ProceedingJoinPoint
 	// Around advice
 	@Around("com.xyz.myapp.SystemArchitecture.businessService()")
     public Object doBasicProfilingAround(ProceedingJoinPoint pjp) throws Throwable {
@@ -68,5 +69,24 @@ public class Example {
             return retVal;
     }
 	
+	// Passing parameters to advice
+	@Before("com.xyz.myapp.SystemArchitecture.dataAccessOperation() && args(account,..)")
+	public void validateAccountArgs(Account account) {
+	        // ...
+			// The args(account,..) part of the pointcut expression serves two purposes: firstly, it restricts matching to only those method executions where the method takes at least one parameter, and the argument passed to that parameter is an instance of Account; secondly, it makes the actual Account object available to the advice via the account parameter.
+	}
+	
+	// Another way of writing this is to declare a pointcut that "provides" the Account object
+	@Pointcut("com.xyz.myapp.SystemArchitecture.dataAccessOperation() && args(account,..)")
+	private void accountDataAccessOperationArgs2(Account account) {}
+	@Before("accountDataAccessOperation(account)")
+	public void validateAccountArgs2(Account account) {
+	        // ...
+	}
+	// Another way of writing this is to declare a pointcut that "provides" the Account object
+	
+}
+
+class Account{
 	
 }

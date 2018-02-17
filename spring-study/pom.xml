@@ -23,6 +23,7 @@
 		<jstl.base.version>1.2</jstl.base.version>
 		<hsqldb.base.version>2.3.4</hsqldb.base.version>
 		<aspectjrt.base.version>1.8.13</aspectjrt.base.version>
+		<aspectjweaver.base.version>1.8.10</aspectjweaver.base.version>
 		
 	</properties>
 
@@ -125,10 +126,17 @@
 		
 		<dependency>
 		    <groupId>org.aspectj</groupId>
-		    <artifactId>aspectjrt</artifactId>
-		    <version>${aspectjrt.base.version}</version>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>${aspectjweaver.base.version}</version>
 		</dependency>
 		
+		<!-- If you are using the Spring-provided agent to enable instrumentation -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-instrument</artifactId>
+		    <version>${spring.base.version}</version>
+		</dependency>
+		<!-- If you are using the Spring-provided agent to enable instrumentation -->
 		
 		<!-- aop end -->
 		

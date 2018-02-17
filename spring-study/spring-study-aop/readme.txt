@@ -1,6 +1,14 @@
 
 https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/core.html#aop
 
+参考链接：https://docs.spring.io/spring/docs/5.0.0.RC3/spring-framework-reference/core.html#aop-ataspectj
+Required libraries (JARS)
+At a minimum you will need the following libraries to use the Spring Framework’s support for AspectJ LTW:
+	spring-aop.jar (version 2.5 or later, plus all mandatory dependencies)
+	aspectjweaver.jar (version 1.6.8 or later)
+If you are using the Spring-provided agent to enable instrumentation, you will also need:
+	spring-instrument.jar
+	
 
 5. Aspect Oriented Programming with Spring
 
@@ -135,7 +143,8 @@ bean(*Service)
 
 5.2.4. Declaring advice
 
-
+// TODO Passing parameters to advice 以及下面的都待验证
+// TODO how you could match the execution of methods annotated with an @Auditable annotation
 
 
 
