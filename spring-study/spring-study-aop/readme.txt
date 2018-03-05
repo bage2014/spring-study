@@ -139,7 +139,7 @@ bean(tradeService)
 any join point (method execution only in Spring AOP) on Spring beans having names that match the wildcard expression *Service:
 
 bean(*Service)
-
+## Combining pointcut expressions 2018-03-05 22:22
 
 5.2.4. Declaring advice
 

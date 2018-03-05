@@ -1,35 +1,55 @@
 package com.bage.pointcut;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+import com.bage.Logger;
 
 /**
  * <br> execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern) throws-pattern?)	
  * <br> The full AspectJ pointcut language supports additional pointcut designators that are not supported in Spring. 
  * <br> These are: call, get, set, preinitialization, staticinitialization, initialization, handler, adviceexecution, withincode, cflow, cflowbelow, if, @this, and @withincode. 
  * <br> Use of these pointcut designators in pointcut expressions interpreted by Spring AOP will result in an IllegalArgumentException being thrown.
+ * <br> 另：Pointcut expressions can be combined using '&&', '||' and '!'. (XML 要把 && 换成 and)	
  * 
  * @author bage
  *
  */
-@Aspect
+@Component
+@Aspect // Declaring a pointcut
 public class SystemArchitecture {
 
-		
 		@Pointcut("execution(* transfer(..))")// the pointcut expression
 		private void anyOldTransfer() {}// the pointcut signature
-		
+		@Before("anyOldTransfer()")
+		public void anyOldTransferBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.anyOldTransfer() is work ");
+		}
 		
 		
 		// Combining pointcut expressions
 		@Pointcut("execution(public * *(..))")
 		private void anyPublicOperation() {}
-
+		@Before("anyPublicOperation()")
+		public void anyPublicOperationBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.anyPublicOperation() is work ",false);
+		}
+		
 		@Pointcut("within(com.xyz.someapp.trading..*)")
 		private void inTrading() {}
-
+		@Before("inTrading()")
+		public void inTradingBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.inTrading() is work ");
+		}
+		
 		@Pointcut("anyPublicOperation() && inTrading()")
 		private void tradingOperation() {}
+		@Before("tradingOperation()")
+		public void tradingOperationBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.tradingOperation() is work ");
+		}
 		
 		
 		
@@ -41,7 +61,10 @@ public class SystemArchitecture {
          */
         @Pointcut("within(com.xyz.someapp.web..*)")
         public void inWebLayer() {}
-
+        @Before("inWebLayer()")
+		public void inWebLayerBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.inWebLayer() is work ");
+		}
         /**
          * A join point is in the service layer if the method is defined
          * in a type in the com.xyz.someapp.service package or any sub-package

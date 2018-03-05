@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ComponentScan(basePackageClasses=BasePackageClass.class)
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy // 启用Spring Aop功能 
 @ImportResource("com/bage/template.xml")
 public class AppConfig {
 
