@@ -3,7 +3,14 @@ package com.bage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.bage.example.BusinessClass;
+import com.xyz.someapp.dao.DataAccessClass;
+import com.xyz.someapp.dao.IDataAccess;
+import com.xyz.someapp.service.IServiceBean;
+import com.xyz.someapp.service.ServiceClass;
 import com.xyz.someapp.trading.TradingClass;
+import com.xyz.someapp.web.WebController1;
+import com.xyz.someapp.web.WebController2;
+import com.xyz.someapp.web.sub.WebControllerSub;
 
 public class Main {
 	
@@ -37,6 +44,30 @@ public class Main {
 		// anyPublicOperation 暂时被注释，会打印太多次了
 		TradingClass tradingClass = context.getBean("tradingClass",TradingClass.class);
 		tradingClass.trading();
+		
+		// in the com.xyz.someapp.web package or any sub-package
+		WebController1 webController1 = context.getBean(WebController1.class);
+		WebController2 webController2 = context.getBean(WebController2.class);
+		WebControllerSub webControllerSub = context.getBean(WebControllerSub.class);
+		webController1.method11();
+		webController1.method12();
+		webController2.method21();
+		webController2.method22();
+		webControllerSub.methodSub1();
+		webControllerSub.methodSub2();
+
+		// in the com.xyz.someapp.service package or any sub-package
+		context.getBean(ServiceClass.class).method();
+			
+		// in the com.xyz.someapp.dao package or any sub-package
+		context.getBean(DataAccessClass.class).method();
+		
+		// TODO
+		context.getBean(IServiceBean.class).method();
+
+		// TODO
+		context.getBean(IDataAccess.class).method();
+		
 		
 		// 5.2.4. Declaring advice
 		

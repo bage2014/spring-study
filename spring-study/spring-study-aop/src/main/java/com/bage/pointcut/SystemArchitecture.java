@@ -72,7 +72,10 @@ public class SystemArchitecture {
          */
         @Pointcut("within(com.xyz.someapp.service..*)")
         public void inServiceLayer() {}
-
+        @Before("inServiceLayer()")
+		public void inServiceLayerBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.inServiceLayer() is work ");
+		}
         /**
          * A join point is in the data access layer if the method is defined
          * in a type in the com.xyz.someapp.dao package or any sub-package
@@ -80,7 +83,10 @@ public class SystemArchitecture {
          */
         @Pointcut("within(com.xyz.someapp.dao..*)")
         public void inDataAccessLayer() {}
-
+        @Before("inDataAccessLayer()")
+		public void inDataAccessLayerBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.inDataAccessLayer() is work ");
+		}
         /**
          * A business service is the execution of any method defined on a service
          * interface. This definition assumes that interfaces are placed in the
@@ -97,7 +103,10 @@ public class SystemArchitecture {
          */
         @Pointcut("execution(* com.xyz.someapp..service.*.*(..))")
         public void businessService() {}
-
+        @Before("businessService()")
+		public void businessServiceBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.businessService() is work ");
+		}
         /**
          * A data access operation is the execution of any method defined on a
          * dao interface. This definition assumes that interfaces are placed in the
@@ -105,7 +114,10 @@ public class SystemArchitecture {
          */
         @Pointcut("execution(* com.xyz.someapp.dao.*.*(..))")
         public void dataAccessOperation() {}
-
+        @Before("dataAccessOperation()")
+		public void dataAccessOperationBefore(){
+			Logger.log("Pointcut com.bage.pointcut.SystemArchitecture.dataAccessOperation() is work ");
+		}
         
         
         // The pointcuts defined in such an aspect can be referred to anywhere that you need a pointcut expression. For example, to make the service layer transactional, you could write:

@@ -81,6 +81,7 @@ args - limits matching to join points (the execution of methods when using Sprin
 
 @annotation - limits matching to join points where the subject of the join point (method being executed in Spring AOP) has the given annotation
 
+常用类似正则规则
 Some examples of common pointcut expressions are given below.
 
 the execution of any public method:
@@ -140,6 +141,7 @@ any join point (method execution only in Spring AOP) on Spring beans having name
 
 bean(*Service)
 ## Combining pointcut expressions 2018-03-05 22:22
+// TODO 常用的类似正则表达式
 
 5.2.4. Declaring advice
 
