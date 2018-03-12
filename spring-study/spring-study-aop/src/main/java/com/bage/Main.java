@@ -3,6 +3,7 @@ package com.bage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.bage.example.BusinessClass;
+import com.bage.pointcut.SystemArchitecture;
 import com.xyz.someapp.dao.DataAccessClass;
 import com.xyz.someapp.dao.IDataAccess;
 import com.xyz.someapp.service.IServiceBean;
@@ -22,6 +23,8 @@ public class Main {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(AppConfig.class);
 		context.register(com.xyz.someapp.AppConfig.class);
+		context.register(com.xyz.myapp.AppConfig.class);
+		
 		context.refresh();
 		
 		// example
@@ -70,6 +73,12 @@ public class Main {
 		
 		
 		// 5.2.4. Declaring advice
+		// 外包类下的pointcut
+		context.getBean(com.xyz.myapp.ServiceClass.class).method();
+		// 直接指定
+		context.getBean(com.xyz.myapp.dao.DataAccessClass.class).method();
+		
+		// TODO void com.bage.advice.Example.doAccessCheckAfterReturning(Object retVal)
 		
 	}
 	

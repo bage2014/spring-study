@@ -8,28 +8,33 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
+import com.bage.Logger;
+
+@Component
 @Aspect
 public class Example {
 
 	// Before advice
 	@Before("com.xyz.myapp.SystemArchitecture.dataAccessOperation()") // Before advice is declared in an aspect using the @Before annotation
     public void doAccessCheckBefore() {
-			// ...
+			//  Logger.log("com.bage.advice.Example.doAccessCheckBefore() is work");
     }
 	
 	@Before("execution(* com.xyz.myapp.dao.*.*(..))") // using an in-place pointcut expression
     public void doAccessCheckBeforeInplace() { 
-            // ...
+            // 	Logger.log("com.bage.advice.Example.doAccessCheckBeforeInplace() is work");
     }
 	
 	
 	// After returning advice
 	@AfterReturning("com.xyz.myapp.SystemArchitecture.dataAccessOperation()")
     public void doAccessCheckAfterReturning() {
-            // ...
+            // Logger.log("com.bage.advice.Example.doAccessCheckAfterReturning() is work");
     }
 	
+	//TODO
 	@AfterReturning(
             pointcut="com.xyz.myapp.SystemArchitecture.dataAccessOperation()",
             returning="retVal")
@@ -37,7 +42,7 @@ public class Example {
             // ...
     }
 	
-	
+	/*
 	// After throwing advice
 	@AfterThrowing("com.xyz.myapp.SystemArchitecture.dataAccessOperation()")
     public void doRecoveryActionsAfterThrowing() {
@@ -84,7 +89,7 @@ public class Example {
 	        // ...
 	}
 	// Another way of writing this is to declare a pointcut that "provides" the Account object
-	
+	*/
 }
 
 class Account{
