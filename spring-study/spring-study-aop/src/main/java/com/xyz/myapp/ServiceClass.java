@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 @Service("myappServiceClass")
 public class ServiceClass {
 	
-	public void method(){
-		System.out.println("com.xyz.someapp.service.ServiceClass.method() is work" );
+	public String method(String helloText) throws Exception{
+		System.out.println("com.xyz.someapp.service.ServiceClass.method("+helloText+") is work" );
+		// throw new Exception();
+		return helloText;
+		
 	}
 	
 }

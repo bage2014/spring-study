@@ -3,7 +3,7 @@ package com.bage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.bage.example.BusinessClass;
-import com.bage.pointcut.SystemArchitecture;
+import com.xyz.myapp.SystemArchitecture;
 import com.xyz.someapp.dao.DataAccessClass;
 import com.xyz.someapp.dao.IDataAccess;
 import com.xyz.someapp.service.IServiceBean;
@@ -15,7 +15,7 @@ import com.xyz.someapp.web.sub.WebControllerSub;
 
 public class Main {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		
 		// test 
@@ -74,10 +74,11 @@ public class Main {
 		
 		// 5.2.4. Declaring advice
 		// 外包类下的pointcut
-		context.getBean(com.xyz.myapp.ServiceClass.class).method();
+		context.getBean(com.xyz.myapp.ServiceClass.class).method("hello world");
 		// 直接指定
 		context.getBean(com.xyz.myapp.dao.DataAccessClass.class).method();
 		
+		//context.getBean(SystemArchitecture.class).businessService();
 		// TODO void com.bage.advice.Example.doAccessCheckAfterReturning(Object retVal)
 		
 	}

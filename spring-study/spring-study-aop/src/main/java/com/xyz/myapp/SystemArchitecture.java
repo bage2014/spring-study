@@ -11,8 +11,9 @@ import com.bage.Logger;
 @Aspect
 public class SystemArchitecture {
 
-	@Pointcut("execution(public void com.xyz.myapp.ServiceClass.method())")
-	public void dataAccessOperation(){
+	@Pointcut("execution(public * com.xyz.myapp.ServiceClass.method(..))")
+	public void dataAccessOperation() {
+		
 	}
 	
 	@After("dataAccessOperation()")
