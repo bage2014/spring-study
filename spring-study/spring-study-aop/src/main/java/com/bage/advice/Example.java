@@ -87,10 +87,10 @@ public class Example {
 			// Logger.log("com.bage.advice.Example.validateAccountArgs(String str)：" + str );	
 	}
 	
-	// Another way of writing this is to declare a pointcut that "provides" the Account object
-	@Pointcut("com.xyz.myapp.SystemArchitecture.dataAccessOperation() && args(account,..)")
+	// Another way of writing this is to declare a pointcut that "provides" the obj object
+	@Pointcut("com.xyz.myapp.SystemArchitecture.dataAccessOperation() && args(obj,..)")
 	private void accountDataAccessOperationArgs2(Object obj) {}
-	@Before("accountDataAccessOperation(account)")
+	@Before("accountDataAccessOperationArgs2(obj)")
 	public void validateAccountArgs2(Object obj) {
 	        // ...
 	}

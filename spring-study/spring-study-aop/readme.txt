@@ -145,11 +145,12 @@ bean(*Service)
 
 5.2.4. Declaring advice
 
-// TODO Passing parameters to advice 以及下面的都待验证
+Passing parameters to advice
 ## 2018-03-12 21:13
 // TODO how you could match the execution of methods annotated with an @Auditable annotation
 
+Advice ordering
+## 默认方法名字典序
 
-
-
+5.3.4. Introductions
 

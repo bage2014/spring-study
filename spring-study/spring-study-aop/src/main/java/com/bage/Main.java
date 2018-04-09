@@ -75,8 +75,10 @@ public class Main {
 		// 5.2.4. Declaring advice
 		// 外包类下的pointcut
 		context.getBean(com.xyz.myapp.ServiceClass.class).method("hello world");
-		// 直接指定
+		// ordered // 默认以 方法名字典序执行
+		System.out.println("---------------- ordered --------------------");
 		context.getBean(com.xyz.myapp.dao.DataAccessClass.class).method();
+		
 		
 		//context.getBean(SystemArchitecture.class).businessService();
 		// TODO void com.bage.advice.Example.doAccessCheckAfterReturning(Object retVal)
