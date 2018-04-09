@@ -151,5 +151,6 @@
 	    <module>spring-study-validation</module>
 	    <module>spring-study-spel</module>
 	    <module>spring-study-aop</module>
-	  </modules>
+    <module>spring-testing</module>
+  </modules>
 </project>
