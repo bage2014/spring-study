@@ -7,7 +7,6 @@
     <artifactId>spring-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-<<<<<<< HEAD
   <artifactId>spring-study-testing</artifactId>
   <packaging>war</packaging>
   <name>spring-testing Maven Webapp</name>
@@ -22,21 +21,5 @@
   </dependencies>
   <build>
     <finalName>spring-study-testing</finalName>
-=======
-  <artifactId>spring-testing</artifactId>
-  <packaging>war</packaging>
-  <name>spring-testing Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <finalName>spring-testing</finalName>
->>>>>>> branch 'master' of https://github.com/bage2014/spring-study.git
   </build>
 </project>
