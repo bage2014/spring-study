@@ -7,9 +7,7 @@
     <artifactId>spring-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.bage</groupId>
-  <artifactId>spring-testing</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>spring-study-testing</artifactId>
   <packaging>war</packaging>
   <name>spring-testing Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -22,6 +20,6 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>spring-testing</finalName>
+    <finalName>spring-study-testing</finalName>
   </build>
 </project>

@@ -1,8 +1,6 @@
 package com.bage.ordered;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.core.Ordered;
 import org.springframework.dao.PessimisticLockingFailureException;
 

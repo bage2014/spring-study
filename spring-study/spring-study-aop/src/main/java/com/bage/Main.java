@@ -3,7 +3,6 @@ package com.bage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.bage.example.BusinessClass;
-import com.xyz.myapp.SystemArchitecture;
 import com.xyz.someapp.dao.DataAccessClass;
 import com.xyz.someapp.dao.IDataAccess;
 import com.xyz.someapp.service.IServiceBean;
