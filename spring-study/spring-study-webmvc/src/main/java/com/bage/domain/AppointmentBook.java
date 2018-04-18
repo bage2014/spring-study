@@ -1,4 +1,4 @@
-package com.bage.controller;
+package com.bage.domain;
 
 import java.util.Date;
 import java.util.Map;

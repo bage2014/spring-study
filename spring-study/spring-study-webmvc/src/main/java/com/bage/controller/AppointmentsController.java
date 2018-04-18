@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bage.domain.Appointment;
+import com.bage.domain.AppointmentBook;
+import com.bage.domain.AppointmentForm;
+
 @Controller
 @RequestMapping("/appointments")
 public class AppointmentsController {
