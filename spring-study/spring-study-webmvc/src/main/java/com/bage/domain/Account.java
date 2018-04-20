@@ -1,8 +1,8 @@
 package com.bage.domain;
 
-public class Pet {
+public class Account {
 
-	public Pet(int petId) {
+	public Account(String number) {
 		// TODO Auto-generated constructor stub
 	}
 
