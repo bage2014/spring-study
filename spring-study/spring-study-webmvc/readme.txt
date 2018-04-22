@@ -36,9 +36,25 @@ Note that to enable the use of matrix variables, you must set the removeSemicolo
 
 Advising controllers with @ControllerAdvice and @RestControllerAdvice
 ## 2018-04-20 21:44
+Check out the @ControllerAdvice documentation for more details.
+
+@JsonView、Jackson JSONP Support
+## TODO
+
+1.3.5. Testing Controllers
+
+1.5. Resolving views
+<bean id="viewResolver"
+                class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+</bean>
 
 
 
+1.7. Building URIs
 
-
+1.11. Handling exceptions
+## 2018-04-22 20:25
 

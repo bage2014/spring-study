@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bage.domain.Account;
 import com.bage.domain.AccountForm;
@@ -209,6 +211,14 @@ public class RequestMappingController {
 	}
 	
 	
+	// You can use the @RequestPart annotation instead of the @RequestParam annotation for this purpose. It allows you to have the content of a specific multipart passed through an HttpMessageConverter taking into consideration the 'Content-Type' header of the multipart:
+	@PostMapping("/someUrl")
+	public String onSubmit(/*@RequestPart("meta-data") MetaData metadata,*/
+	                @RequestPart("file-data") MultipartFile file) {
+
+	        // ...
+			return "";
+	}
 	
 	
 }
