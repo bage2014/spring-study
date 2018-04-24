@@ -58,3 +58,24 @@ Check out the @ControllerAdvice documentation for more details.
 1.11. Handling exceptions
 ## 2018-04-22 20:25
 
+1.11.6. Customizing the Default Servlet Container Error Page
+web.xml 配置：
+<error-page>
+        <location>/error</location>
+</error-page>
+
+
+1.13.1. The Controller ControllerClassNameHandlerMapping
+
+1.13.2. The Model ModelMap (ModelAndView)
+
+1.14.2. HTTP caching support for static resources
+
+1.14.3. Support for the Cache-Control, ETag and Last-Modified response headers in Controllers
+
+
+Java-based Spring configuration:
+##TODO
+
+1.16.1. Enabling the MVC Java Config or the MVC XML Namespace
+## 2018-04-24 22:07

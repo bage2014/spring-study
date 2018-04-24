@@ -1,15 +1,29 @@
 package com.bage.initializer;
 
-import javax.servlet.ServletContext;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import org.springframework.web.WebApplicationInitializer;
+public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-public class MyWebApplicationInitializer implements WebApplicationInitializer {
+        @Override
+        protected Class<?>[] getRootConfigClasses() {
+                return null;
+        }
 
-    public void onStartup(ServletContext container) {
-//  		  ServletRegistration.Dynamic registration = container.addServlet("example", new DispatcherServlet());
-//            registration.setLoadOnStartup(1);
-//            registration.addMapping("/example/*");
-    }
+        @Override
+        protected Class<?>[] getServletConfigClasses() {
+                return new Class[] { MyWebConfig.class };
+        }
 
+        @Override
+        protected String[] getServletMappings() {
+                return new String[] { "/" };
+        }
+
+        // If using XML-based Spring configuration, you should extend directly from AbstractDispatcherServletInitializer:
+//        @Override
+//        protected WebApplicationContext createServletApplicationContext() {
+//                XmlWebApplicationContext cxt = new XmlWebApplicationContext();
+//                cxt.setConfigLocation("/WEB-INF/spring/dispatcher-config.xml");
+//                return cxt;
+//        }
 }

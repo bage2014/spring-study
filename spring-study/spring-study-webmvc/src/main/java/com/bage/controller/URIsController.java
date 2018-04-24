@@ -42,6 +42,7 @@ public class URIsController {
         public void dervletUri(){
         	UriComponentsBuilder base = ServletUriComponentsBuilder.fromCurrentContextPath().path("/en");
         	MvcUriComponentsBuilder builder = MvcUriComponentsBuilder.relativeTo(base);
+        	System.out.println(builder);
         	// builder.withMethodCall(on(URIsController.class).getBooking(21)).buildAndExpand(42);
 
         	// URI uri = uriComponents.encode().toUri();

@@ -14,6 +14,7 @@ public class FileUploadController {
 
                 if (!file.isEmpty()) {
                         byte[] bytes = file.getBytes();
+                        System.out.println(bytes);
                         // store the bytes somewhere
                         return "redirect:uploadSuccess";
                 }
