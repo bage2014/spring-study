@@ -1,29 +1,29 @@
 package com.bage.initializer;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 
-public class MyWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class MyWebApplicationInitializer /*extends AbstractAnnotationConfigDispatcherServletInitializer*/{
 
-        @Override
+        
         protected Class<?>[] getRootConfigClasses() {
                 return null;
         }
 
-        @Override
+        
         protected Class<?>[] getServletConfigClasses() {
-                return new Class[] { MyWebConfig.class };
+                return new Class[] { MyWebApplicationConfig.class };
         }
 
-        @Override
+        
         protected String[] getServletMappings() {
                 return new String[] { "/" };
         }
 
         // If using XML-based Spring configuration, you should extend directly from AbstractDispatcherServletInitializer:
-//        @Override
-//        protected WebApplicationContext createServletApplicationContext() {
-//                XmlWebApplicationContext cxt = new XmlWebApplicationContext();
-//                cxt.setConfigLocation("/WEB-INF/spring/dispatcher-config.xml");
-//                return cxt;
-//        }
+        protected WebApplicationContext createServletApplicationContext() {
+                XmlWebApplicationContext cxt = new XmlWebApplicationContext();
+                cxt.setConfigLocation("/WEB-INF/example-servlet.xml");
+                return cxt;
+        }
 }

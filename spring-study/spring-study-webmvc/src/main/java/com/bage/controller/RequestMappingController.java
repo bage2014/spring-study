@@ -37,18 +37,19 @@ import com.bage.domain.User;
 
 // @SessionAttributes("pet") 暂时注释掉
 @Controller
+@RequestMapping("/requestMapping")
 public class RequestMappingController {
 
 	
 	// The Errors or BindingResult parameters have to follow the model object that is being bound immediately as the method signature might have more than one model object and Spring will create a separate BindingResult instance for each of them so the following sample won’t work:
 	// Invalid ordering of BindingResult and @ModelAttribute
-	@PostMapping
+	@PostMapping("processSubmit1")
 	public String processSubmit(@ModelAttribute("pet") Pet pet, Model model, BindingResult result) { 
 		return "";
 	}
 	
 	// Note, that there is a Model parameter in between Pet and BindingResult. To get this working you have to reorder the parameters as follows:
-	@PostMapping
+	@PostMapping("processSubmit2")
 	public String processSubmit(@ModelAttribute("pet") Pet pet, BindingResult result, Model model) {
 		return "";
 	}
@@ -56,7 +57,7 @@ public class RequestMappingController {
 	
 	// Supported method return types
 	// If the method is annotated with @ResponseBody, the return type is written to the response HTTP body
-	@PostMapping
+	@PostMapping("processSubmit3")
 	public String processSubmit() {
 		// ModelAndView 
 		// Rendering
@@ -71,7 +72,7 @@ public class RequestMappingController {
 	
 	
 	// Binding request parameters to method parameters with @RequestParam
-	@GetMapping
+	@GetMapping("processSubmit4")
     public String setupForm(@RequestParam("petId") int petId, ModelMap model) {
             Pet pet = new Pet(petId);
             model.addAttribute("pet", pet);
@@ -130,7 +131,7 @@ public class RequestMappingController {
 	
 	
 	// Using @ModelAttribute on a method argument
-	@PostMapping("/owners/{ownerId}/pets/{petId}/edit")
+	@PostMapping("/owners1/{ownerId}/pets/{petId}/edit")
 	public String processSubmit(@ModelAttribute Pet pet) {
 		return "";
 	}
@@ -138,7 +139,7 @@ public class RequestMappingController {
 	public String save(@ModelAttribute("account") Account account) {
 	       return "";
 	}
-	@PostMapping("/owners/{ownerId}/pets/{petId}/edit")
+	@PostMapping("/owners2/{ownerId}/pets/{petId}/edit")
 	public String processSubmit(@ModelAttribute("pet") Pet pet, BindingResult result) {
 	        if (result.hasErrors()) {
 	                return "petForm";
@@ -178,28 +179,28 @@ public class RequestMappingController {
 	
 	// Using @SessionAttributes to store model attributes in the HTTP session between requests
 	// 类定义也可以添加 @SessionAttributes("pet")
-	@RequestMapping("/")
+	@RequestMapping("/handle1")
 	public String handle(@SessionAttribute User user) {
 	       return "";
 	}
 	
 	
 	// Using @RequestAttribute to access request attributes
-	@RequestMapping("/")
+	@RequestMapping("/handle2")
 	public String handle(@RequestAttribute Client client) {
 	       return "";
 	}
 	
 	
 	// Mapping cookie values with the @CookieValue annotation
-	@RequestMapping("/displayHeaderInfo.do")
+	@RequestMapping("/displayHeaderInfo.do1")
 	public void displayHeaderInfo(@CookieValue("JSESSIONID") String cookie) {
 	        //...
 	}
 	
 	
 	// Mapping request header attributes with the @RequestHeader annotation
-	@RequestMapping("/displayHeaderInfo.do")
+	@RequestMapping("/displayHeaderInfo.do2")
 	public void displayHeaderInfo(@RequestHeader("Accept-Encoding") String encoding,
 	                @RequestHeader("Keep-Alive") long keepAlive) {
 //		Host                    localhost:8080

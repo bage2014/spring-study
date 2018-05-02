@@ -20,6 +20,14 @@ public class MatrixVariablesController {
 
 	}
 	
+	// GET /pets/42
+	@GetMapping("/pets2/{petId}")
+	public void findPet(@MatrixVariable(required=false, defaultValue="1") int q) {
+
+	        // q == 1
+
+	}
+	
 	// GET /owners/42;q=11/pets/21;q=22
 	@GetMapping("/owners/{ownerId}/pets/{petId}")
 	public void findPet(
@@ -30,17 +38,9 @@ public class MatrixVariablesController {
 	        // q2 == 22
 
 	}
-	
-	// GET /pets/42
-	@GetMapping("/pets/{petId}")
-	public void findPet(@MatrixVariable(required=false, defaultValue="1") int q) {
-
-	        // q == 1
-
-	}
-	
+		
 	// GET /owners/42;q=11;r=12/pets/21;q=22;s=23
-	@GetMapping("/owners/{ownerId}/pets/{petId}")
+	@GetMapping("/owners2/{ownerId}/pets/{petId}")
 	public void findPet(
 	                @MatrixVariable MultiValueMap<String, String> matrixVars,
 	                @MatrixVariable(pathVar="petId") MultiValueMap<String, String> petMatrixVars) {

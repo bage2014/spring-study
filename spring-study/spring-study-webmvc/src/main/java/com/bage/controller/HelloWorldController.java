@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/helloWorld")
 @Controller // To enable autodetection of such annotated controllers, you add component scanning to your configuration
 public class HelloWorldController {
 

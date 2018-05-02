@@ -32,7 +32,7 @@ import com.bage.BaseClasses;
 @Configuration
 @ComponentScan(basePackageClasses=BaseClasses.class) // To enable autodetection of such annotated controllers, you add component scanning to your configuration
 @EnableWebMvc // == <mvc:annotation-driven>
-public class AppConfig implements WebMvcConfigurer{
+public class WebAppConfig implements WebMvcConfigurer{
 
 	/*Thymeleaf+Spring*/
 	@Bean

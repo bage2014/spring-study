@@ -10,6 +10,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("/asynchronous")
 public class AsynchronousController {
 
 	@PostMapping 

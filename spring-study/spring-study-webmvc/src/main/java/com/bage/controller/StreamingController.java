@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
 @Controller
+@RequestMapping("/streaming")
 public class StreamingController {
 	
 	@RequestMapping("/download")

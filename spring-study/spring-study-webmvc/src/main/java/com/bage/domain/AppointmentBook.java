@@ -3,6 +3,9 @@ package com.bage.domain;
 import java.util.Date;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AppointmentBook {
 
 	public Map<String, Appointment> getAppointmentsForToday() {
