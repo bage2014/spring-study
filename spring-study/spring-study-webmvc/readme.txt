@@ -18,12 +18,22 @@ Figure 3. Single root context in Spring Web MVC
 
 使用例子：
 .xml配置：
-<!-- web.xml使用example-servlet.xml配置, com.bage.initializer相关配置全部不需要 -->
+<!-- 
+	需要 web.xml的example-servlet.xml 相关配置, 
+	不启用com.bage.initializer.MyWebApplicationInitializer 
+	不启用 com.bage.initializer.WebAppInitializer
+	 -->
 .no web.xml 配置
-<!-- web.xml不需要example-servlet.xml配置, 启用com.bage.initializer.MyWebApplicationInitializer 
-	继承 AbstractAnnotationConfigDispatcherServletInitializer相关配置 -->
-.java配置
-<!-- web.xml不需要example-servlet.xml配置, 启用com.bage.initializer相关配置 -->
+<!-- 不需要 web.xml的example-servlet.xml 相关配置, 
+	启用com.bage.initializer.MyWebApplicationInitializer 
+	不启用 com.bage.initializer.WebAppInitializer
+	 -->
+.java 配置 + WebAppInitializer
+<!-- 
+	不需要 web.xml的example-servlet.xml 相关配置, 
+	不启用com.bage.initializer.MyWebApplicationInitializer 
+	启用 com.bage.initializer.WebAppInitializer
+	-->
 
 1.2.1. Special Bean Types In the WebApplicationContext
 

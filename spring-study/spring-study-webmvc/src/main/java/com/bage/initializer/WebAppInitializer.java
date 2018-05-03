@@ -1,10 +1,7 @@
 package com.bage.initializer;
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-
 // Note that we can achieve the same with java-based configurations:
-public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class WebAppInitializer /*extends AbstractAnnotationConfigDispatcherServletInitializer*/ {
 
     
     protected Class<?>[] getRootConfigClasses() {
