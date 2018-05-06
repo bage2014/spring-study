@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -221,5 +222,17 @@ public class RequestMappingController {
 			return "";
 	}
 	
+	@CrossOrigin
+    @RequestMapping("/{id}")
+    public Account retrieve(@PathVariable Long id) {
+            // ... You can add an @CrossOrigin annotation to your @RequestMapping annotated handler method in order to enable CORS on it. By default @CrossOrigin allows all origins and the HTTP methods specified in the @RequestMapping annotation:
+		
+		// It is also possible to enable CORS for the whole controller:
+		// @CrossOrigin(origins = "http://domain2.com", maxAge = 3600)
+		// @RestController
+		// @RequestMapping("/account")
+		// public class AccountController {
+		return null;
+    }
 	
 }

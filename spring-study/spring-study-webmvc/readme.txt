@@ -97,3 +97,30 @@ Java-based Spring configuration:
 
 1.16.1. Enabling the MVC Java Config or the MVC XML Namespace
 ## 2018-04-24 22:07
+
+1.16.9. Serving of Resources
+void com.bage.initializer.WebAppConfig.addResourceHandlers(ResourceHandlerRegistry registry)
+== <mvc:resources mapping="/resources/**" location="/public-resources/"/>
+
+2.5.1. View resolvers
+
+
+3.3. Global CORS configuration
+void com.bage.initializer.WebAppConfig.addCorsMappings(CorsRegistry registry)
+xml:
+<mvc:cors>
+
+        <mvc:mapping path="/api/**"
+                allowed-origins="http://domain1.com, http://domain2.com"
+                allowed-methods="GET, PUT"
+                allowed-headers="header1, header2, header3"
+                exposed-headers="header1, header2" allow-credentials="false"
+                max-age="123" />
+
+        <mvc:mapping path="/resources/**"
+                allowed-origins="http://domain1.com" />
+
+</mvc:cors>
+
+
+

@@ -25,7 +25,7 @@ public class WebAppConfig
         extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
-
+    
 
     public WebAppConfig() {
         super();
@@ -110,4 +110,15 @@ public class WebAppConfig
         return viewResolver;
     }
 
+    // Enabling CORS for the whole application is as simple as:
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//            registry.addMapping("/api/**")
+//    .allowedOrigins("http://domain2.com")
+//    .allowedMethods("PUT", "DELETE")
+//    .allowedHeaders("header1", "header2", "header3")
+//    .exposedHeaders("header1", "header2")
+//    .allowCredentials(false).maxAge(3600);
+//    }
+    
 }
