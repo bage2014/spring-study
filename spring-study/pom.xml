@@ -167,5 +167,6 @@
 	    <module>spring-study-spel</module>
 	    <module>spring-study-aop</module>
     	<module>spring-study-testing</module>
+    <module>spring-study-dataAccess</module>
   </modules>
 </project>
