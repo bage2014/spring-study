@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <bean id="cpu" class="com.bage.xml.autowiringcollaborators.CPU">
+        </bean>
+        
+        <bean id="cumputerBean" class="com.bage.xml.autowiringcollaborators.byname.CumputerBean" autowire="byName">
+        </bean>
+        
+        <bean id="cumputerBean2" class="com.bage.xml.autowiringcollaborators.bytype.CumputerBean" autowire="byType">
+        </bean>
+        
+        <bean id="cumputerBean3" class="com.bage.xml.autowiringcollaborators.constructor.CumputerBean" autowire="constructor">
+        </bean>
+
+</beans>
